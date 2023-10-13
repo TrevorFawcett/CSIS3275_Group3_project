@@ -59,10 +59,12 @@ public class UserController_group3 {
 		UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
 		 // Get all account balances
         List<Float> accountBalances = bankingService.getAllAccountBalances();
-        List<Float> creditBalances = creditService.getAllAccountBalances();
+        List<Float> creditBalance = creditService.getAllAccountBalances();
 
         // Calculate total balance
         float totalBalance = (float) accountBalances.stream().mapToDouble(Float::doubleValue).sum();
+        float totalCreditBalance = (float) creditBalance.stream().mapToDouble(Float::doubleValue).sum();
+        
 		model.addAttribute("user", userDetails);
 		
 		//banking details
@@ -71,7 +73,7 @@ public class UserController_group3 {
 		
 		//Credit Card Details
 		model.addAttribute("credit", creditService.readCreditCardAccounts());
-		model.addAttribute("totalCreditBalance", creditBalances); // Add total balance to the model
+		model.addAttribute("totalCreditBalance", totalCreditBalance); // Add total balance to the model
 		
 		
 		return "user";

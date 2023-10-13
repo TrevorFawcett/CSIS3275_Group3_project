@@ -42,14 +42,12 @@ public class Csis3275Group3ProjectApplication {
 
 			Banking_group3 savingsAccount = new Banking_group3("Savings Account", 5000.00f, 5000, "Savings");
 			Bankingrepository.createBankingAccounts(savingsAccount);
-			
-			
 
-//			Credit_group3 cashbackAccount = new Credit_group3("Cashback Card", 628.25f, 3000, 0.10f, "Cashback");
-//			creditRepository.createCreditCardAccounts(cashbackAccount);
-//
-//			Credit_group3 rewardsAccount = new Credit_group3("Rewards Card", 575.0f, 5000, 0.15f, "Rewards");
-//			creditRepository.createCreditCardAccounts(rewardsAccount);
+			Credit_group3 cashbackAccount = new Credit_group3("Cashback Card", 628.25f, 3000, 0.10f, "Cashback");
+			creditRepository.createCreditCardAccounts(cashbackAccount);
+
+			Credit_group3 rewardsAccount = new Credit_group3("Rewards Card", 575.0f, 5000, 0.15f, "Rewards");
+			creditRepository.createCreditCardAccounts(rewardsAccount);
 		};
 	}
 

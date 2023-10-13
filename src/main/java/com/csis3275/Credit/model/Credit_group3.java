@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name="Credit")
+@Table(name="credit")
 public class Credit_group3 {
 	
 	@Id
@@ -18,7 +18,7 @@ public class Credit_group3 {
 	private Long id; //account number
 	private String name;
 	private float balance;
-	private int limit;
+	private int creditLimit;
 	private float interest;
 	private String type;
 	
@@ -26,11 +26,11 @@ public class Credit_group3 {
 		super();
 	}
 
-	public Credit_group3(String name, float balance, int limit, float interest, String type) {
+	public Credit_group3(String name, float balance, int creditLimit, float interest, String type) {
 		super();
 		this.name = name;
 		this.balance = balance;
-		this.limit = limit;
+		this.creditLimit = creditLimit;
 		this.interest = interest;
 		this.type = type;
 	}
@@ -60,11 +60,11 @@ public class Credit_group3 {
 	}
 
 	public int getLimit() {
-		return limit;
+		return creditLimit;
 	}
 
 	public void setLimit(int limit) {
-		this.limit = limit;
+		this.creditLimit = limit;
 	}
 
 	public float getInterest() {

@@ -290,7 +290,7 @@ a.open-link:hover {
 				<a th:text="${account.name}"></a> <span class="total"
 					th:text="'$' + ${account.balance}"></span></li>
 				<li class="list-item"><span>Total</span> <span class="total"
-					th:text="${totalBalance}"></span></li>
+					th:text="${totalCreditBalance}"></span></li>
 			</ul>
 			
 			<a th:href="@{/user-page/credit/add}" class="btn btn-success"> <svg
