@@ -83,6 +83,7 @@ public class UserController_group3 {
 	public String adminPage (Model model, Principal principal) {
 		UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
 		model.addAttribute("user", userDetails);
+		model.addAttribute("userInfo", repository.readUsers() );
 		
 		return "admin";
 	}
