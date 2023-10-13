@@ -6,13 +6,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
+
+import java.util.List;
 
 //import java.io.Serializable;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.csis3275.banking.model.Banking_group3;
 import com.csis3275.login.model.AccountGenerator_group3;
 
 @Entity
@@ -22,13 +26,14 @@ public class User_group3 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
 	private String email;
 	private String password;
 	private String role;
-
 	private Long accNumber;
 	
+//	
+//	@OneToMany(mappedBy = "users")
+//    private List<Banking_group3> bankingAccounts;
 	
 	public User_group3() {
 		super();
