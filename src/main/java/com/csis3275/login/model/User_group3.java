@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
@@ -31,9 +32,8 @@ public class User_group3 {
 	private String role;
 	private Long accNumber;
 	
-//	
-//	@OneToMany(mappedBy = "users")
-//    private List<Banking_group3> bankingAccounts;
+
+
 	
 	public User_group3() {
 		super();

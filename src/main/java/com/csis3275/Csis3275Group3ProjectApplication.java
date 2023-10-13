@@ -18,6 +18,9 @@ public class Csis3275Group3ProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Csis3275Group3ProjectApplication.class, args);
+		
+		
+		
 	}
 
 	@Bean
@@ -37,10 +40,10 @@ public class Csis3275Group3ProjectApplication {
 					"$2a$10$57VDThG1aa./iRozB98QeuPtzADsVY0vfqcKehoDZ9USKe4pu3b22", "USER", (long) 2);
 			repository.createUser(user2);
 
-			Banking_group3 checkingAccount = new Banking_group3("Checking Account", 1000.00f, 1000, "Checking");
+			Banking_group3 checkingAccount = new Banking_group3("Checking Account", 1000.00f, 1000, "Checking", user2);
 			Bankingrepository.createBankingAccounts(checkingAccount);
 
-			Banking_group3 savingsAccount = new Banking_group3("Savings Account", 5000.00f, 5000, "Savings");
+			Banking_group3 savingsAccount = new Banking_group3("Savings Account", 5000.00f, 5000, "Savings", user2);
 			Bankingrepository.createBankingAccounts(savingsAccount);
 
 			Credit_group3 cashbackAccount = new Credit_group3("Cashback Card", 628.25f, 3000, 0.10f, "Cashback");

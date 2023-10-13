@@ -36,6 +36,11 @@ public class UserServiceImpl_group3 implements UserService_group3 {
 		public User_group3 createUser(User_group3 newUser)	{
 			return userRepository.save(newUser);
 		}
+		
+		
+		public User_group3 getUserByEmail(String email) {
+	        return userRepository.findByEmail(email);
+	    }
 
 		
 
