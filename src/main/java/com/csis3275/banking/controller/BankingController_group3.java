@@ -18,13 +18,13 @@ public class BankingController_group3 {
 	private BankingServiceImpl bankingService;
 
 	
-	@GetMapping("/user/banking/add")
+	@GetMapping("/user-page/banking/add")
 	public String addBankingAccount(Model model) {
 		model.addAttribute("bankingToAdd", new Banking_group3());
 		return "banking/add";
 	}
 	
-	@PostMapping("/banking/add")
+	@PostMapping("/user-page/banking/add")
 	public String addNewBankingAccount(Banking_group3 bankingToAdd) {
 		bankingService.createStudent(bankingToAdd);
 		return "redirect:/students/list";
