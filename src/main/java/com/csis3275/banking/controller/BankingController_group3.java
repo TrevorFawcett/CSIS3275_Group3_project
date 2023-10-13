@@ -21,7 +21,7 @@ public class BankingController_group3 {
 	@GetMapping("/user-page/banking/add")
 	public String addBankingAccount(Model model) {
 		model.addAttribute("bankingToAdd", new Banking_group3());
-		return "banking/add";
+		return "/banking/add";
 	}
 	
 	@PostMapping("/user-page/banking/add")
