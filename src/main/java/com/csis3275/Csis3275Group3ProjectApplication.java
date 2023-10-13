@@ -7,8 +7,11 @@ import org.springframework.context.annotation.Bean;
 
 import com.csis3275.login.model.User_group3;
 import com.csis3275.login.service.UserServiceImpl_group3;
+
 import com.csis3275.banking.model.BankingServiceImpl;
 import com.csis3275.banking.model.Banking_group3;
+import com.csis3275.Credit.model.CreditServiceImpl;
+import com.csis3275.Credit.model.Credit_group3;
 
 @SpringBootApplication
 public class Csis3275Group3ProjectApplication {
@@ -18,7 +21,7 @@ public class Csis3275Group3ProjectApplication {
 	}
 
 	@Bean
-	CommandLineRunner demo(UserServiceImpl_group3 repository, BankingServiceImpl Bankingrepository)	{
+	CommandLineRunner demo(UserServiceImpl_group3 repository, BankingServiceImpl Bankingrepository, CreditServiceImpl creditRepository)	{
 		
 		return (args) -> {
 			//Use https://www.browserling.com/tools/bcrypt to encrypt your password before adding a test user to database
@@ -36,6 +39,13 @@ public class Csis3275Group3ProjectApplication {
 	        // Sample Savings Account
 		    Banking_group3 savingsAccount = new Banking_group3("Savings Account", 5000.00f, 5000, "Savings");
 		    Bankingrepository.createBankingAccounts(savingsAccount);
+		    
+		    Credit_group3 cashbackAccount = new Credit_group3("Cashback Card", 628.25f, 3000, 0.10f, "Cashback");
+		    creditRepository.createCreditCardAccounts(cashbackAccount);
+		    
+		    
+		    Credit_group3 rewardsAccount = new Credit_group3("Rewards Card", 575.0f, 5000, 0.10f, "Rewards");
+		    creditRepository.createCreditCardAccounts(rewardsAccount);
 		};
 		}
 	

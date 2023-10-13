@@ -14,22 +14,22 @@ public class CreditServiceImpl {
 	
 	
 	@Autowired
-	private ICreditRepository creditRepository;
+	private ICreditRepository creditService;
 	
 	
 	//CREATE
 	public Credit_group3 createCreditCardAccounts(Credit_group3 newCreditCard)	{
-		return creditRepository.save(newCreditCard);
+		return creditService.save(newCreditCard);
 	}
 	
 	//READ
 	public List<Credit_group3> readCreditCardAccounts()	{
-		return (List<Credit_group3>)creditRepository.findAll();
+		return (List<Credit_group3>)creditService.findAll();
 	}
 	
     // Get all account balances
     public List<Float> getAllAccountBalances() {
-        List<Credit_group3> accounts = (List<Credit_group3>) creditRepository.findAll();
+        List<Credit_group3> accounts = (List<Credit_group3>) creditService.findAll();
         List<Float> accountBalances = accounts.stream()
                 .map(Credit_group3::getBalance) // Extract the balance of each account
                 .toList();

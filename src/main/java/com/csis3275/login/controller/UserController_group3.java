@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.csis3275.Credit.model.CreditServiceImpl;
 import com.csis3275.banking.model.BankingServiceImpl;
 import com.csis3275.login.model.AccountGenerator_group3;
 import com.csis3275.login.model.FormData_group3;
@@ -46,7 +47,7 @@ public class UserController_group3 {
 	@Autowired
 	private BankingServiceImpl bankingService;
 	
-	
+	@Autowired CreditServiceImpl creditService;
 	
 	@GetMapping("/login")
 	public String login() {
@@ -58,12 +59,20 @@ public class UserController_group3 {
 		UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
 		 // Get all account balances
         List<Float> accountBalances = bankingService.getAllAccountBalances();
+        List<Float> creditBalances = creditService.getAllAccountBalances();
 
         // Calculate total balance
         float totalBalance = (float) accountBalances.stream().mapToDouble(Float::doubleValue).sum();
 		model.addAttribute("user", userDetails);
+		
+		//banking details
 		model.addAttribute("banking", bankingService.readBankingAccounts());
 		model.addAttribute("totalBalance", totalBalance); // Add total balance to the model
+		
+		//Credit Card Details
+		model.addAttribute("credit", creditService.readCreditCardAccounts());
+		model.addAttribute("totalCreditBalance", creditBalances); // Add total balance to the model
+		
 		
 		return "user";
 	}
