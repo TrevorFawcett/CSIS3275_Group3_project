@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 
 import com.csis3275.login.model.User_group3;
 import com.csis3275.login.service.UserServiceImpl_group3;
+import com.csis3275.banking.model.Banking_group3;
 
 @SpringBootApplication
 public class Csis3275Group3ProjectApplication {
@@ -26,6 +27,7 @@ public class Csis3275Group3ProjectApplication {
 			repository.createUser(user1);
 			User_group3 user2 = new User_group3("user@fake.com", "$2a$10$57VDThG1aa./iRozB98QeuPtzADsVY0vfqcKehoDZ9USKe4pu3b22", "USER", (long) 2);
 			repository.createUser(user2);
+			
 		};
 		}
 }
