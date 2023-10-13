@@ -1,60 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0e2433;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Dashboard</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	background-color: #0e2433;
+	color: white;
+	margin: 0;
+	padding: 0;
+	
+	
+}
+
+.header {
+	background-color: #0f0;
+	padding: 20px;
+	text-align: center;
+	color: #0e2433;
+}
+
+.header h1 {
+	margin: 0;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 20px auto;
+	padding: 20px;
+	background-color: #0e2433;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+	color: #45b6fe;
+}
+
+
+/* Add more styles and components for your dashboard here */
+        .sidebar {
+            width: 0;
+            background-color: #333;
             color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            overflow-y: auto;
+            transition: 0.5s; /* Add smooth transition for sliding effect */
+        }
+
+        .sidebar.open {
+            width: 250px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
             margin: 0;
             padding: 0;
         }
 
-        .header {
-            background-color: #0f0;
-            padding: 20px;
-            text-align: center;
-            color: #0e2433;
+        .sidebar a {
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
         }
 
-        .header h1 {
-            margin: 0;
+        .sidebar a:hover {
+            background-color: #45b6fe;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #0e2433;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        h2 {
-            color: #45b6fe;
-        }
-
-        /* Add more styles and components for your dashboard here */
-    </style>
+   
+</style>
 </head>
 <body>
-    <div class="header">
-        <h1>ADMIN Dashboard</h1>
-    </div>
-    <div class="container">
-        <h2>Welcome, [[${user.getUsername()}]]</h2>
-        
-        <span sec:authorize="isAuthenticated">
-        <a th:href="@{/logout}">
-         Logout
-        
-        </a>
-        
-        </span>
+	<div class="header">
+		<button onclick="toggleSidebar()">Toggle Sidebar</button>
+		<h1>ADMIN Dashboard</h1>
+	</div>
+	<div class="sidebar">
+	<button onclick="toggleSidebar()">Toggle Sidebar</button>
+            <ul>
+                <li><a href="#credit-transactions">Credit Transactions</a></li>
+                <li><a href="#debit-transactions">Debit Transactions</a></li>
+            </ul>
+        </div>
 
-    </div>
+
+	<div class="container">
+		<h2>Welcome, [[${user.getUsername()}]]</h2>
+
+		<span sec:authorize="isAuthenticated"> <a th:href="@{/logout}">
+				Logout </a>
+
+		</span>
+		<!-- Credit Transactions Section -->
+		<section id="credit-transactions">
+			<h3>Credit Transactions</h3>
+			<!-- Add your credit transactions content here -->
+		</section>
+
+		<!-- Debit Transactions Section -->
+		<section id="debit-transactions">
+			<h3>Debit Transactions</h3>
+			<!-- Add your debit transactions content here -->
+		</section>
+
+	</div>
+	<script>
+        // JavaScript function to toggle the sidebar
+        function toggleSidebar() {
+            var sidebar = document.querySelector(".sidebar");
+            sidebar.classList.toggle("open");
+        }
+    </script>
+
+
+
 </body>
 </html>
