@@ -6,11 +6,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+
+
+
 @Entity
 @Table(name="Credit")
 public class Credit_group3 {
-	
-	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
