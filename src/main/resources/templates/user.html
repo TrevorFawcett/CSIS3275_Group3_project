@@ -1,60 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #0e2433;
-            color: white;
-            margin: 0;
-            padding: 0;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+	crossorigin="anonymous">
+<title>User Dashboard</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	background-color: #0e2433;
+	color: white;
+	margin: 0;
+	padding: 0;
+}
+
+.header {
+	background-color: #0f0;
+	padding: 20px;
+	text-align: center;
+	color: #0e2433;
+}
+
+.header h1 {
+	margin: 0;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 20px auto;
+	padding: 20px;
+	background-color: #0e2433;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+	color: #45b6fe;
+}
+
+/* Add more styles and components for your dashboard here */
+nav {
+	background-color: black;
+	padding: 10px 0;
+	display: flex;
+	align-items: center;
+	
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+	padding: 8px 16px;
+	
+}
+
+nav a:hover {
+	background-color: #45b6fe;
+}
+
+    /* Style for the new container */
+    .cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    /* Style for individual cards */
+    .card {
+        width: 30%;
+        margin-bottom: 20px;
+        background-color: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 5px;
+        padding: 15px;
+        color: white;
+    }
+
+    /* Add styles for headings and paragraphs inside the cards if needed */
+    .card h3 {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .card p {
+        margin: 0;
+    }
+    
+       .dropdown-container {
+            position: relative;
+            display: inline-block;
+            float: right;
         }
 
-        .header {
+        .dropdown-content {
+            display: none;
+            position: absolute;
             background-color: #0f0;
-            padding: 20px;
-            text-align: center;
-            color: #0e2433;
+            min-width: 160px;
+            z-index: 1;
         }
 
-        .header h1 {
-            margin: 0;
+        .dropdown-container:hover .dropdown-content {
+            display: block;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #0e2433;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        .dropdown-item {
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            display: block;
         }
 
-        h2 {
-            color: #45b6fe;
+        .dropdown-item:hover {
+            background-color: #45b6fe;
         }
-
-        /* Add more styles and components for your dashboard here */
-    </style>
+</style>
 </head>
 <body>
-    <div class="header">
-        <h1>USER Dashboard</h1>
-    </div>
-    <div class="container">
-        <h2>Welcome, [[${user.getUsername()}]]</h2>
-        
-        <span sec:authorize="isAuthenticated">
-        <a th:href="@{/logout}">
-         Logout
-        
-        </a>
-        
-        </span>
+	<nav>
+		<a href="#credit-transactions">Credit Transactions</a> <a
+		
+			href="#debit-transactions">Debit Transactions</a> <a href="#loans">Loans</a>
+			
+		<a href="#current-accounts">Current Accounts</a>
+		
+		<div class="dropdown-container">
+		
+            <h4>Hi, [[${user.getUsername()}]]</h4>
+            
+            <div class="dropdown-content">
+                <a th:href="@{/logout}" class="dropdown-item">Logout</a>
+            </div>
+            
+        </div>
+	</nav>
 
-    </div>
+	<div class="container">
+		 <div class="subcontainer">
+            <h2>Banking Accounts</h2>
+            <div class="cards-container">
+                <!-- Card for Checking Account -->
+                <div class="card">
+                    <h3>Checking Account</h3>
+                    <p>Balance: $1,000.00</p>
+                </div>
+                <!-- Card for Savings Account -->
+                <div class="card">
+                    <h3>Savings Account</h3>
+                    <p>Balance: $5,000.00</p>
+                </div>
+            </div>
+        </div>
+        <div class="subcontainer">
+            <h2>Credit Cards</h2>
+            <div class="cards-container">
+                <!-- Card for Credit Card -->
+                <div class="card">
+                    <h3>Credit Card</h3>
+                    <p>Outstanding Balance: $500.00</p>
+                </div>
+            </div>
+        </div>
+        <div class="subcontainer">
+            <h2>Loans</h2>
+            <div class="cards-container">
+                <!-- Card for Loan -->
+                <div class="card">
+                    <h3>Loan</h3>
+                    <p>Remaining Balance: $10,000.00</p>
+                </div>
+            </div>
+        </div>
+	</div>
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
 </body>
 </html>
