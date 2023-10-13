@@ -19,6 +19,8 @@ public class Banking_group3 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id; //account number
+	@Column(name = "user_id")
+	private Long userId;
 	private String name;
 	private float balance;
 	private int transferLimit;
