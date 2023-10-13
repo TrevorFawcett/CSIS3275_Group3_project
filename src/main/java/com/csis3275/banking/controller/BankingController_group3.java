@@ -24,7 +24,7 @@ public class BankingController_group3 {
 		return "banking/add";
 	}
 	
-	@PostMapping("/students/add")
+	@PostMapping("/banking/add")
 	public String addNewBankingAccount(Banking_group3 bankingToAdd) {
 		bankingService.createStudent(bankingToAdd);
 		return "redirect:/students/list";
