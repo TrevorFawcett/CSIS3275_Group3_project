@@ -1,0 +1,25 @@
+
+      <table class="table table-striped">
+		<thead>
+			<td>Account Id
+			</td>
+			<td>name
+			</td>
+			<td>Last Name
+			</td>
+			<td>Email
+			</td>
+			<td>Date of Birth
+			</td>
+		</thead>
+		<tr th:each="student: ${studentList}">
+		<td th:text="${student.Id}"></td>
+		<td th:text="${student.firstName}"></td>
+		<td th:text="${student.lastName}"></td>
+		<td th:text="${student.Email}"></td>
+		<td th:text="${student.dob}"></td>
+		<td><a th:href="@{'/students/delete?deletethesillystudent=' + ${student.id}}" class="btn btn-danger">Delete</a>	
+		<td><a th:href="@{'/students/update?StudentToUpdate=' + ${student.id}}" class="btn btn-primary">Update</a>	
+		</tr>
+	</table>
+

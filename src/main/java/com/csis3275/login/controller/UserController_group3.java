@@ -2,6 +2,7 @@ package com.csis3275.login.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.csis3275.banking.model.BankingServiceImpl;
 import com.csis3275.login.model.AccountGenerator_group3;
 import com.csis3275.login.model.FormData_group3;
 import com.csis3275.login.model.UserAccountDto_group3;
@@ -22,6 +24,9 @@ import com.csis3275.login.service.AccountServiceImpl_group3;
 import com.csis3275.login.service.AccountService_group3;
 import com.csis3275.login.service.UserServiceImpl_group3;
 import com.csis3275.login.service.UserService_group3;
+
+
+
 
 @Controller
 public class UserController_group3 {
@@ -38,6 +43,9 @@ public class UserController_group3 {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
+	@Autowired
+	private BankingServiceImpl bankingService;
+	
 	
 	
 	@GetMapping("/login")
@@ -48,7 +56,15 @@ public class UserController_group3 {
 	@GetMapping("user-page")
 	public String userPage (Model model, Principal principal) {
 		UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
+		 // Get all account balances
+        List<Float> accountBalances = bankingService.getAllAccountBalances();
+
+        // Calculate total balance
+        float totalBalance = (float) accountBalances.stream().mapToDouble(Float::doubleValue).sum();
 		model.addAttribute("user", userDetails);
+		model.addAttribute("banking", bankingService.readBankingAccounts());
+		model.addAttribute("totalBalance", totalBalance); // Add total balance to the model
+		
 		return "user";
 	}
 	
@@ -56,6 +72,7 @@ public class UserController_group3 {
 	public String adminPage (Model model, Principal principal) {
 		UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
 		model.addAttribute("user", userDetails);
+		
 		return "admin";
 	}
 	

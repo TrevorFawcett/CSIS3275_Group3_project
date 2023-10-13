@@ -19,14 +19,24 @@ public class BankingServiceImpl {
 	
 	
 	//CREATE
-	public Banking_group3 createStudent(Banking_group3 newBanking)	{
+	public Banking_group3 createBankingAccounts(Banking_group3 newBanking)	{
 		return bankingRepository.save(newBanking);
 	}
 	
 	//READ
-	public List<Banking_group3> readStudents()	{
+	public List<Banking_group3> readBankingAccounts()	{
 		return (List<Banking_group3>)bankingRepository.findAll();
 	}
+	
+    // Get all account balances
+    public List<Float> getAllAccountBalances() {
+        List<Banking_group3> accounts = (List<Banking_group3>) bankingRepository.findAll();
+        List<Float> accountBalances = accounts.stream()
+                .map(Banking_group3::getBalance) // Extract the balance of each account
+                .toList();
+        return accountBalances;
+    }
+	
 
 }
 

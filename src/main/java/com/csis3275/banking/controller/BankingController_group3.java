@@ -12,23 +12,30 @@ import com.csis3275.banking.model.BankingServiceImpl;
 
 @Controller
 public class BankingController_group3 {
-	
-	
+
 	@Autowired
 	private BankingServiceImpl bankingService;
 
-	
 	@GetMapping("/user-page/banking/add")
 	public String addBankingAccount(Model model) {
 		model.addAttribute("bankingToAdd", new Banking_group3());
 		return "/banking/add";
 	}
-	
+
 	@PostMapping("/user-page/banking/add")
 	public String addNewBankingAccount(Banking_group3 bankingToAdd) {
-		bankingService.createStudent(bankingToAdd);
-		return "redirect:/students/list";
+
+		if (bankingToAdd.getType().equals("Checking")) {
+
+			bankingToAdd.setTransferLimit(1000);
+			bankingToAdd.setBalance(0.0f);
+		} else if (bankingToAdd.getType().equals("Savings")) {
+			bankingToAdd.setTransferLimit(2000);
+			bankingToAdd.setBalance(0.0f);
+		}
+
+		bankingService.createBankingAccounts(bankingToAdd);
+		return "redirect:/user-page";
 	}
-	
 
 }
