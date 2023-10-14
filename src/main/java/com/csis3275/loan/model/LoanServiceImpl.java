@@ -30,9 +30,9 @@ public class LoanServiceImpl {
 	
 	//GET ALL BALANCES 
 	
-	public List<Double> getAllAccountBalances() {
+	public List<Float> getAllAccountBalances() {
         List<Loan_group3> accounts = (List<Loan_group3>) loanService.findAll();
-        List<Double> accountBalances = accounts.stream()
+        List<Float> accountBalances = accounts.stream()
                 .map(Loan_group3::getTotalToBePaid) // Extract the balance of each account
                 .toList();
         return accountBalances;

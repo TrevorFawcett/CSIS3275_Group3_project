@@ -10,8 +10,11 @@ import com.csis3275.login.service.UserServiceImpl_group3;
 
 import com.csis3275.banking.model.BankingServiceImpl;
 import com.csis3275.banking.model.Banking_group3;
+import com.csis3275.loan.model.LoanServiceImpl;
+import com.csis3275.loan.model.Loan_group3;
 import com.csis3275.Credit.model.CreditServiceImpl;
 import com.csis3275.Credit.model.Credit_group3;
+
 
 @SpringBootApplication
 public class Csis3275Group3ProjectApplication {
@@ -22,7 +25,7 @@ public class Csis3275Group3ProjectApplication {
 
 	@Bean
 	CommandLineRunner demo(UserServiceImpl_group3 repository, BankingServiceImpl Bankingrepository,
-			CreditServiceImpl creditRepository) {
+			CreditServiceImpl creditRepository, LoanServiceImpl loanRepository) {
 
 		return (args) -> {
 			// Use https://www.browserling.com/tools/bcrypt to encrypt your password before
@@ -48,6 +51,12 @@ public class Csis3275Group3ProjectApplication {
 
 			Credit_group3 rewardsAccount = new Credit_group3("Rewards Card", 575.0f, 5000, 0.15f, "Rewards");
 			creditRepository.createCreditCardAccounts(rewardsAccount);
+
+			Loan_group3 loan1 = new Loan_group3("Personal Loan", 10000.0f, 5.0f, 36, 11000.0f);
+			loanRepository.createLoans(loan1);
+			
+			Loan_group3 loan2 = new Loan_group3("Home Loan", 200000.0f, 3.5f, 240, 250000.0f);
+			loanRepository.createLoans(loan2);
 		};
 	}
 

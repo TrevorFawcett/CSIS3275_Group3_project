@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.csis3275.Credit.model.CreditServiceImpl;
 import com.csis3275.banking.model.BankingServiceImpl;
+import com.csis3275.loan.model.LoanServiceImpl;
 import com.csis3275.login.model.AccountGenerator_group3;
 import com.csis3275.login.model.FormData_group3;
 import com.csis3275.login.model.UserAccountDto_group3;
@@ -47,7 +48,12 @@ public class UserController_group3 {
 	@Autowired
 	private BankingServiceImpl bankingService;
 	
-	@Autowired CreditServiceImpl creditService;
+	@Autowired 
+	private CreditServiceImpl creditService;
+	
+	@Autowired
+	private LoanServiceImpl loanService;
+	
 	
 	@GetMapping("/login")
 	public String login() {
@@ -60,10 +66,12 @@ public class UserController_group3 {
 		 // Get all account balances
         List<Float> accountBalances = bankingService.getAllAccountBalances();
         List<Float> creditBalance = creditService.getAllAccountBalances();
+        List<Float> loanBalance = loanService.getAllAccountBalances();
 
         // Calculate total balance
         float totalBalance = (float) accountBalances.stream().mapToDouble(Float::doubleValue).sum();
         float totalCreditBalance = (float) creditBalance.stream().mapToDouble(Float::doubleValue).sum();
+        float totalLoanBalance = (float)loanBalance.stream().mapToDouble(Float::doubleValue).sum();
         
 		model.addAttribute("user", userDetails);
 		
@@ -75,6 +83,10 @@ public class UserController_group3 {
 		model.addAttribute("credit", creditService.readCreditCardAccounts());
 		model.addAttribute("totalCreditBalance", totalCreditBalance); // Add total balance to the model
 		
+		
+		//Loan Details
+		model.addAttribute("loan", loanService.readLoans());
+		model.addAttribute("totalLoanBalance", totalLoanBalance);
 		
 		return "user";
 	}
