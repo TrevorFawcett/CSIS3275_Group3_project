@@ -318,7 +318,7 @@ a.open-link:hover {
 			<ul class="list">
 				<li class="list-item" th:each="account : ${loan}">
 				<a th:href="'#account-' + ${account.id}" class="btn btn-success"     
-					th:text="${account.loan_type}"></a> <span class="total"
+					th:text="${account.type}"></a> <span class="total"
 					th:text="'$' + ${account.totalToBePaid}"></span></li>
 				<li class="list-item"><span>Total</span> <span class="total"
 					th:text="${totalLoanBalance}"></span></li>
