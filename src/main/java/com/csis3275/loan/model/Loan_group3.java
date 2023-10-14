@@ -1,9 +1,13 @@
 package com.csis3275.loan.model;
 
+import com.csis3275.login.model.User_group3;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,7 +25,9 @@ public class Loan_group3 {
 	
 	
 	
-	
+	@ManyToOne
+    @JoinColumn(name = "user_id") // Define the foreign key column
+	private User_group3 user;
 	public Loan_group3() {
 		super();
 	}
