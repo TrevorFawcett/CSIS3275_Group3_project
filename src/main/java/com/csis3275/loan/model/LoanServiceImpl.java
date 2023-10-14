@@ -16,12 +16,12 @@ public class LoanServiceImpl {
 	
 	
 	//CREATE
-	public Loan_group3 loans(Loan_group3 newLoan)	{
+	public Loan_group3 createLoans(Loan_group3 newLoan)	{
 		return loanService.save(newLoan);
 	}
 	
 	//READ
-	public List<Loan_group3> readCreditCardAccounts()	{
+	public List<Loan_group3> readLoans()	{
 		return (List<Loan_group3>)loanService.findAll();
 	}
 	
