@@ -17,7 +17,7 @@ public class Loan_group3 {
 	private float amount;
 	private float rate;
 	private int loanTerm;
-	private double totalToBePaid;
+	private float totalToBePaid;
 	
 	
 	
@@ -26,7 +26,7 @@ public class Loan_group3 {
 		super();
 	}
 
-	public Loan_group3(String loan_type, float amount, float rate, int loanTerm, double totalToBePaid) {
+	public Loan_group3(String loan_type, float amount, float rate, int loanTerm, float totalToBePaid) {
 		super();
 		this.loan_type = loan_type;
 		this.amount = amount;
@@ -75,11 +75,11 @@ public class Loan_group3 {
 		this.loanTerm = loanTerm;
 	}
 
-	public double getTotalToBePaid() {
+	public float getTotalToBePaid() {
 		return totalToBePaid;
 	}
 
-	public void setTotalToBePaid(double totalToBePaid) {
+	public void setTotalToBePaid(float totalToBePaid) {
 		this.totalToBePaid = totalToBePaid;
 	}
 
