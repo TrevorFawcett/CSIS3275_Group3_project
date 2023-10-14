@@ -73,9 +73,9 @@ public class UserController_group3 {
 		 
 		
 		 // Get all account balances
-        List<Float> accountBalances = bankingService.getAllAccountBalances();
-        List<Float> creditBalance = creditService.getAllAccountBalances();
-        List<Float> loanBalance = loanService.getAllAccountBalances();
+        List<Float> accountBalances = bankingService.getAllAccountBalancesById(currentUser.getId());
+        List<Float> creditBalance = creditService.getAllAccountBalancesById(currentUser.getId());
+        List<Float> loanBalance = loanService.getAllAccountBalancesById(currentUser.getId());
 
 
         // Calculate total balance

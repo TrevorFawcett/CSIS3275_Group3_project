@@ -44,7 +44,7 @@ public class LoanServiceImpl {
 	
 	//GET ALL BALANCES BY ID
 	
-	public List<Float> getAllAccountBalances(Long Id) {
+	public List<Float> getAllAccountBalancesById(Long Id) {
         List<Loan_group3> accounts = (List<Loan_group3>) loanService.findAllById(Id);
         List<Float> accountBalances = accounts.stream()
                 .map(Loan_group3::getTotalToBePaid) // Extract the balance of each account
