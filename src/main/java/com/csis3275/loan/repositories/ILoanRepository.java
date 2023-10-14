@@ -12,7 +12,7 @@ import com.csis3275.loan.model.Loan_group3;
 @Repository
 public interface ILoanRepository extends CrudRepository<Loan_group3, Long>{
 	
-	@Query("SELECT l FROM Credit_group3 l WHERE l.user.id = :userId")
+	@Query("SELECT l FROM Loan_group3 l WHERE l.user.id = :userId")
 	List<Loan_group3> findAllById(Long userId);
 
 }
