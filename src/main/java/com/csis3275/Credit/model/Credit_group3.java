@@ -92,6 +92,15 @@ public class Credit_group3 {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	public User_group3 getUser() {
+		return user;
+	}
+
+	public void setUser(User_group3 user) {
+		this.user = user;
+	}
+	
 	
 
 }
