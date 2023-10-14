@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -47,7 +49,11 @@ public class UserController_group3 {
 	@Autowired
 	private BankingServiceImpl bankingService;
 	
-	@Autowired CreditServiceImpl creditService;
+	@Autowired 
+	private CreditServiceImpl creditService;
+	
+	@Autowired 
+	private UserServiceImpl_group3 userService;
 	
 	@GetMapping("/login")
 	public String login() {
@@ -56,9 +62,16 @@ public class UserController_group3 {
 	
 	@GetMapping("user-page")
 	public String userPage (Model model, Principal principal) {
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = authentication.getName();
+		
 		UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
+		User_group3 currentUser = userService.getUserByEmail(username);
+		 
+		
 		 // Get all account balances
-        List<Float> accountBalances = bankingService.getAllAccountBalances();
+        List<Float> accountBalances = bankingService.getAllAccountBalancesById(currentUser.getId());
         List<Float> creditBalance = creditService.getAllAccountBalances();
 
         // Calculate total balance
@@ -68,7 +81,7 @@ public class UserController_group3 {
 		model.addAttribute("user", userDetails);
 		
 		//banking details
-		model.addAttribute("banking", bankingService.readBankingAccounts());
+		model.addAttribute("banking", bankingService.readBankingAccountsByUser(currentUser.getId()));
 		model.addAttribute("totalBalance", totalBalance); // Add total balance to the model
 		
 		//Credit Card Details

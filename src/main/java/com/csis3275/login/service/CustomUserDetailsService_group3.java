@@ -27,5 +27,5 @@ public class CustomUserDetailsService_group3 implements UserDetailsService {
 		return new CustomUserDetail_group3(user);
 
 	}
-
+	
 }

@@ -28,7 +28,21 @@ public class BankingServiceImpl {
 		return (List<Banking_group3>)bankingRepository.findAll();
 	}
 	
-    // Get all account balances
+	//READ BY ID
+	public List<Banking_group3> readBankingAccountsByUser(Long id)	{
+		return (List<Banking_group3>)bankingRepository.findAllById(id);
+	}
+	
+    // Get all account balances by Id
+    public List<Float> getAllAccountBalancesById(Long Id) {
+        List<Banking_group3> accounts = (List<Banking_group3>) bankingRepository.findAllById(Id);
+        List<Float> accountBalances = accounts.stream()
+                .map(Banking_group3::getBalance) // Extract the balance of each account
+                .toList();
+        return accountBalances;
+    }
+    
+    //Get all account balances
     public List<Float> getAllAccountBalances() {
         List<Banking_group3> accounts = (List<Banking_group3>) bankingRepository.findAll();
         List<Float> accountBalances = accounts.stream()
