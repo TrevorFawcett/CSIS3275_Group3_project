@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.csis3275.Credit.model.Credit_group3;
 import com.csis3275.loan.model.Loan_group3;
 import com.csis3275.loan.repositories.ILoanRepository;
 
@@ -27,6 +28,9 @@ public class LoanServiceImpl {
 	
 	
 	//READ BY ID
+	public List<Loan_group3> readLoansById(Long Id) {
+		return (List<Loan_group3>) loanService.findAllById(Id);
+	}
 	
 	//GET ALL BALANCES 
 	
@@ -39,4 +43,12 @@ public class LoanServiceImpl {
     }
 	
 	//GET ALL BALANCES BY ID
+	
+	public List<Float> getAllAccountBalances(Long Id) {
+        List<Loan_group3> accounts = (List<Loan_group3>) loanService.findAllById(Id);
+        List<Float> accountBalances = accounts.stream()
+                .map(Loan_group3::getTotalToBePaid) // Extract the balance of each account
+                .toList();
+        return accountBalances;
+    }
 }
