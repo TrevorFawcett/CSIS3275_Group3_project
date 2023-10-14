@@ -95,7 +95,7 @@ public class UserController_group3 {
 		
 		
 		//Loan Details
-		model.addAttribute("loan", loanService.readLoans());
+		model.addAttribute("loan", loanService.readLoansById(currentUser.getId()));
 		model.addAttribute("totalLoanBalance", totalLoanBalance);
 		
 		return "user";
