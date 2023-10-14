@@ -17,7 +17,7 @@ public class Loan_group3 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	private String loan_type;
+	private String type;
 	private float amount;
 	private float rate;
 	private int loanTerm;
@@ -33,10 +33,10 @@ public class Loan_group3 {
 		super();
 	}
 
-	public Loan_group3(String loan_type, float amount, float rate, int loanTerm, float totalToBePaid,
+	public Loan_group3(String type, float amount, float rate, int loanTerm, float totalToBePaid,
 			User_group3 user) {
 		super();
-		this.loan_type = loan_type;
+		this.type = type;
 		this.amount = amount;
 		this.rate = rate;
 		this.loanTerm = loanTerm;
@@ -46,6 +46,14 @@ public class Loan_group3 {
 	
 	
 	
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public User_group3 getUser() {
 		return user;
@@ -63,13 +71,6 @@ public class Loan_group3 {
 		this.id = id;
 	}
 
-	public String getLoan_type() {
-		return loan_type;
-	}
-
-	public void setLoan_type(String loan_type) {
-		this.loan_type = loan_type;
-	}
 
 	public float getAmount() {
 		return amount;

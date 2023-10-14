@@ -45,11 +45,11 @@ Authentication authentication = SecurityContextHolder.getContext().getAuthentica
 			
 			float payment;    
 
-			if (loanToAdd.getLoan_type().equals("Car")) {
+			if (loanToAdd.getType().equals("Car")) {
 				loanToAdd.setRate(0.03f);
 
 				
-			} else if (loanToAdd.getLoan_type().equals("Home")) {
+			} else if (loanToAdd.getType().equals("Home")) {
 				loanToAdd.setRate(0.075f);
 
 			}

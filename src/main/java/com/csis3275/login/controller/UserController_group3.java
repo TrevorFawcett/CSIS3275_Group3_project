@@ -101,14 +101,25 @@ public class UserController_group3 {
 		return "user";
 	}
 	
+	
+	
+	
 	@GetMapping("admin-page")
 	public String adminPage (Model model, Principal principal) {
+		
+		
 		UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
 		model.addAttribute("user", userDetails);
 		model.addAttribute("userInfo", repository.readUsers() );
+		model.addAttribute("bankingInfo", bankingService.readBankingAccounts());
+		model.addAttribute("creditInfo", creditService.readCreditCardAccounts());
+		model.addAttribute("loanInfo", loanService.readLoans());
 		
 		return "admin";
 	}
+	
+	
+	
 	
 	@GetMapping("/register")
 	public String registerPage(Model model) {

@@ -46,11 +46,11 @@ public class CreditController_group3 {
 			
 			if (creditToAdd.getType().equals("Cashback")) {
 
-				creditToAdd.setLimit(3000);
+				creditToAdd.setTransfer(3000);
 				creditToAdd.setBalance(0.0f);
 				
 			} else if (creditToAdd.getType().equals("Rewards")) {
-				creditToAdd.setLimit(5000);
+				creditToAdd.setTransfer(5000);
 				creditToAdd.setBalance(0.0f);
 			}
 		}

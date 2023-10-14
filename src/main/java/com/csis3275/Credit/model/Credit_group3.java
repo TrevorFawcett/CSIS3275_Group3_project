@@ -22,7 +22,7 @@ public class Credit_group3 {
 	private Long id; //account number
 	private String name;
 	private float balance;
-	private int creditLimit;
+	private int transfer;
 	private float interest;
 	private String type;
 	
@@ -35,11 +35,11 @@ public class Credit_group3 {
 		super();
 	}
 
-	public Credit_group3(String name, float balance, int creditLimit, float interest, String type, User_group3 user) {
+	public Credit_group3(String name, float balance, int transfer, float interest, String type, User_group3 user) {
 		super();
 		this.name = name;
 		this.balance = balance;
-		this.creditLimit = creditLimit;
+		this.transfer = transfer;
 		this.interest = interest;
 		this.type = type;
 		this.user = user;
@@ -69,12 +69,13 @@ public class Credit_group3 {
 		this.balance = balance;
 	}
 
-	public int getLimit() {
-		return creditLimit;
+
+	public int getTransfer() {
+		return transfer;
 	}
 
-	public void setLimit(int limit) {
-		this.creditLimit = limit;
+	public void setTransfer(int transfer) {
+		this.transfer = transfer;
 	}
 
 	public float getInterest() {

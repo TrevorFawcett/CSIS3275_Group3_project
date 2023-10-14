@@ -55,10 +55,10 @@ public class Csis3275Group3ProjectApplication {
 			Credit_group3 rewardsAccount = new Credit_group3("Rewards Card", 575.0f, 5000, 0.15f, "Rewards", user2);
 			creditRepository.createCreditCardAccounts(rewardsAccount);
 
-			Loan_group3 loan1 = new Loan_group3("Personal Loan", 10000.0f, 5.0f, 36, 11000.0f, user2);
+			Loan_group3 loan1 = new Loan_group3("Personal Loan", 10000.0f, 5.0f, 4, 11000.0f, user2);
 			loanRepository.createLoans(loan1);
 			
-			Loan_group3 loan2 = new Loan_group3("Home Loan", 200000.0f, 3.5f, 240, 250000.0f, user2);
+			Loan_group3 loan2 = new Loan_group3("Home Loan", 200000.0f, 3.5f, 7, 250000.0f, user2);
 			loanRepository.createLoans(loan2);
 		};
 	}
