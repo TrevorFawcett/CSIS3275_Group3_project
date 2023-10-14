@@ -27,6 +27,14 @@ public class CreditServiceImpl {
 		return (List<Credit_group3>)creditService.findAll();
 	}
 	
+	
+	//READ BY ID
+		public List<Credit_group3> readCreditCardAccountsById(Long Id)	{
+			return (List<Credit_group3>)creditService.findAllById(Id);
+		}
+	
+	
+	
     // Get all account balances
     public List<Float> getAllAccountBalances() {
         List<Credit_group3> accounts = (List<Credit_group3>) creditService.findAll();
