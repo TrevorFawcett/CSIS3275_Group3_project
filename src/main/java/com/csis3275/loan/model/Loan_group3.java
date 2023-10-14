@@ -28,11 +28,11 @@ public class Loan_group3 {
 
 	public Loan_group3(String loan_type, float amount, float rate, int loanTerm, float totalToBePaid) {
 		super();
-		this.loan_type = loan_type;
-		this.amount = amount;
-		this.rate = rate;
-		this.loanTerm = loanTerm;
-		this.totalToBePaid = totalToBePaid;
+		this.loan_type = loan_type; //
+		this.amount = amount; //
+		this.rate = rate; //
+		this.loanTerm = loanTerm; 
+		this.totalToBePaid = totalToBePaid; //
 	}
 
 	public long getId() {

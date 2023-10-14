@@ -24,18 +24,23 @@ public class LoanController {
 
 	@PostMapping("/user-page/loan/add")
 	public String addNewLoan(Loan_group3 loanToAdd) {
+		
+		float payment;    
 
 		if (loanToAdd.getLoan_type().equals("Car")) {
-			
-			loanToAdd.setRate(0);
-			loanToAdd.setTotalToBePaid(0);
+			loanToAdd.setRate(0.03f);
 
 			
-		} else if (loanToAdd.getLoan_type().equals("House")) {
-			loanToAdd.setRate(0);
-			loanToAdd.setTotalToBePaid(0);
+		} else if (loanToAdd.getLoan_type().equals("Home")) {
+			loanToAdd.setRate(0.075f);
 
 		}
+		
+		
+		payment = (loanToAdd.getAmount() * (loanToAdd.getRate() * loanToAdd.getLoanTerm() ) );
+		
+		loanToAdd.setTotalToBePaid(payment + loanToAdd.getAmount());
+
 
 		loanService.createLoans(loanToAdd);
 		return "redirect:/user-page";
