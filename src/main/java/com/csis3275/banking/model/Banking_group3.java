@@ -44,10 +44,7 @@ public class Banking_group3 {
 		this.type = type;
 		this.user = user;
 	}
-
 	
-	
-
 	public Long getId() {
 		return id;
 	}
