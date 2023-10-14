@@ -28,17 +28,31 @@ public class Loan_group3 {
 	@ManyToOne
     @JoinColumn(name = "user_id") // Define the foreign key column
 	private User_group3 user;
+	
 	public Loan_group3() {
 		super();
 	}
 
-	public Loan_group3(String loan_type, float amount, float rate, int loanTerm, float totalToBePaid) {
+	public Loan_group3(String loan_type, float amount, float rate, int loanTerm, float totalToBePaid,
+			User_group3 user) {
 		super();
-		this.loan_type = loan_type; //
-		this.amount = amount; //
-		this.rate = rate; //
-		this.loanTerm = loanTerm; 
-		this.totalToBePaid = totalToBePaid; //
+		this.loan_type = loan_type;
+		this.amount = amount;
+		this.rate = rate;
+		this.loanTerm = loanTerm;
+		this.totalToBePaid = totalToBePaid;
+		this.user = user;
+	}
+	
+	
+	
+
+	public User_group3 getUser() {
+		return user;
+	}
+
+	public void setUser(User_group3 user) {
+		this.user = user;
 	}
 
 	public long getId() {
