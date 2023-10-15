@@ -25,6 +25,7 @@ public class BankingTrans_group3 {
 	private String description;
 	private float withdrawal;
 	private float deposit;
+	private boolean isRefunded;
 	
 	
 	@ManyToOne
@@ -40,7 +41,7 @@ public class BankingTrans_group3 {
 
 
 	public BankingTrans_group3(String type, float amount, String description, float withdrawal, float deposit,
-			Banking_group3 banking) {
+			Banking_group3 banking, boolean isRefunded) {
 		super();
 		this.type = type;
 		this.amount = amount;
@@ -48,10 +49,25 @@ public class BankingTrans_group3 {
 		this.withdrawal = withdrawal;
 		this.deposit = deposit;
 		this.banking = banking;
+		this.isRefunded = isRefunded;
 	}
 
 	
 	
+	
+	
+
+	public boolean isRefunded() {
+		return isRefunded;
+	}
+
+
+
+	public void setRefunded(boolean isRefunded) {
+		this.isRefunded = isRefunded;
+	}
+
+
 
 	public float getWithdrawal() {
 		return withdrawal;
