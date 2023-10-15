@@ -111,6 +111,7 @@ public class BankingTransController_group3 {
 		Banking_group3 banking = bankingService.readSingleBankingAccount(accountId);
 		
 		banking.setBalance(banking.getBalance() + b.getAmount()); //UPDATE THE BALANCE
+		b.setRefunded(true); 
 	    
 		//RECORD THE NEW TRANSACTION
 		
