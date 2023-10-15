@@ -22,6 +22,12 @@ public class BankingTransServiceImpl {
 	public BankingTrans_group3 createBankingTransaction(BankingTrans_group3 newBankingTransaction) {
 		return bankingTransService.save(newBankingTransaction);
 	}
+	
+	
+	//READ BY ONE
+	public BankingTrans_group3 readSingleBankingTransaction(Long id) {
+		return bankingTransService.findById(id).get();
+	}
 
 	
 	//READ

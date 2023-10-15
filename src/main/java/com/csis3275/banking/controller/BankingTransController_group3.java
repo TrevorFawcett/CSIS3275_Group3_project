@@ -92,12 +92,40 @@ public class BankingTransController_group3 {
 				
 				newTran.setWithdrawal(0.0f);
 				newTran.setDeposit(newTran.getAmount());
-				banking.setBalance((float) (banking.getBalance() - newTran.getAmount()));
+				banking.setBalance((float) (banking.getBalance() + newTran.getAmount()));
 			}
 		
 			bankingTransService.createBankingTransaction(newTran);
 			return "redirect:/user-page";
 		
+	}
+	
+	
+	@GetMapping("/user-page/banking/transactions/refund")
+	public String refundTransaction(
+	    @RequestParam("account_id") Long accountId,
+	    @RequestParam("transaction_id") Long transactionId) {
+		
+		BankingTrans_group3 b = bankingTransService.readSingleBankingTransaction(transactionId);
+		Banking_group3 banking = bankingService.readSingleBankingAccount(accountId);
+		
+		banking.setBalance(banking.getBalance() + b.getAmount()); //UPDATE THE BALANCE
+	    
+		//RECORD THE NEW TRANSACTION
+		
+		BankingTrans_group3 newT = new BankingTrans_group3();
+		newT.setType("Refund");
+		newT.setDescription("refund transaction");
+		newT.setWithdrawal(0.0f);
+		newT.setDeposit(b.getAmount());
+		newT.setAmount(b.getAmount());
+		newT.setBanking(banking);
+		
+		
+		bankingTransService.createBankingTransaction(newT);
+		
+		
+	    return "redirect:/admin-page"; 
 	}
 	
 }
