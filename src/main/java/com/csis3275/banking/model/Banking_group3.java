@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.csis3275.login.model.User_group3;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
@@ -32,6 +34,12 @@ public class Banking_group3 {
     @JoinColumn(name = "user_id") // Define the foreign key column
 	private User_group3 user;
 	
+	
+	@OneToMany(mappedBy = "banking", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BankingTrans_group3> bankingTransactions;
+	
+    
+    
 	public Banking_group3() {
 		super();
 	}

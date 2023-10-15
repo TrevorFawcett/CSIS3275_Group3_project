@@ -46,8 +46,6 @@ public class BankingServiceImpl {
 	}
 	
 	
-	
-	
     // Get all account balances by Id
     public List<Float> getAllAccountBalancesById(Long Id) {
         List<Banking_group3> accounts = (List<Banking_group3>) bankingRepository.findAllById(Id);

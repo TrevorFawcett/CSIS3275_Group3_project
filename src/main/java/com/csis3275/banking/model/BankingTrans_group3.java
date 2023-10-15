@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import com.csis3275.login.model.User_group3;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -29,7 +30,7 @@ public class BankingTrans_group3 {
 	
 	
 	@ManyToOne
-    @JoinColumn(name = "account_id") // Define the foreign key column
+    @JoinColumn(name = "account_id",nullable = true) // Define the foreign key column
 	private Banking_group3 banking;
 
 
