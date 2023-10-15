@@ -26,6 +26,8 @@ public class Banking_group3 {
 	private float balance;
 	private int transferLimit;
 	private String type;
+	private float withdrawal;
+	private float deposit;
 	
 
 	@ManyToOne
@@ -36,15 +38,36 @@ public class Banking_group3 {
 		super();
 	}
 
-	public Banking_group3(String name, float balance, int transferLimit, String type, User_group3 user) {
+	public Banking_group3(String name, float deposit, float withdrawal, float balance, int transferLimit, String type, User_group3 user) {
 		super();
 		this.name = name;
 		this.balance = balance;
 		this.transferLimit = transferLimit;
 		this.type = type;
+		this.withdrawal = withdrawal;
+		this.deposit = deposit;
 		this.user = user;
 	}
 	
+	
+	
+	
+	public float getWithdrawal() {
+		return withdrawal;
+	}
+
+	public void setWithdrawal(float withdrawal) {
+		this.withdrawal = withdrawal;
+	}
+
+	public float getDeposit() {
+		return deposit;
+	}
+
+	public void setDeposit(float deposit) {
+		this.deposit = deposit;
+	}
+
 	public Long getId() {
 		return id;
 	}
