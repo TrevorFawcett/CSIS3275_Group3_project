@@ -1,9 +1,14 @@
 package com.csis3275.banking.repositories;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.csis3275.banking.model.BankingTrans_group3;
 
-public interface IBankingTransRepository extends CrudRepository<BankingTrans_group3,Long>{
+public interface IBankingTransRepository extends CrudRepository<BankingTrans_group3, Long> {
 
+	@Query("SELECT bt FROM BankingTrans_group3 bt WHERE bt.account.id = :accountId")
+	List<BankingTrans_group3> findAllById(Long accountId);
 }
