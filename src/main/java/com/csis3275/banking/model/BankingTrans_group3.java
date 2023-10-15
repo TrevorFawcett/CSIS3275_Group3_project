@@ -21,6 +21,8 @@ public class BankingTrans_group3 {
 	private String type;
 	private double amount;
 	private String description;
+	private double withdrawal;
+	private double deposit;
 	
 	
 	@ManyToOne
@@ -34,13 +36,42 @@ public class BankingTrans_group3 {
 	}
 
 
-	public BankingTrans_group3(String type, double amount, String description, Banking_group3 banking) {
+
+	public BankingTrans_group3(String type, double amount, String description, double withdrawal, double deposit,
+			Banking_group3 banking) {
 		super();
 		this.type = type;
 		this.amount = amount;
 		this.description = description;
+		this.withdrawal = withdrawal;
+		this.deposit = deposit;
 		this.banking = banking;
 	}
+
+	
+	
+
+	public double getWithdrawal() {
+		return withdrawal;
+	}
+
+
+	public void setWithdrawal(double withdrawal) {
+		this.withdrawal = withdrawal;
+	}
+
+
+
+	public double getDeposit() {
+		return deposit;
+	}
+
+
+
+	public void setDeposit(double deposit) {
+		this.deposit = deposit;
+	}
+
 
 
 	public long getId() {
