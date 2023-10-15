@@ -35,7 +35,7 @@
 							<td th:text="${transaction.description}"></td>
 							<td th:text="${transaction.withdrawal}"></td>
 							<td th:text="${transaction.deposit}"></td>
-							<td th:if="${userRole == 'ADMIN'}"><a th:href="@{'/user-page/banking/transactions/refund
+							<td th:if="${userRole == 'ADMIN' && transaction.type == 'Withdrawal'}"><a th:href="@{'/user-page/banking/transactions/refund
 							?account_id=' + ${accountId}+ '&transaction_id=' + ${transaction.id}}"
 								class="btn btn-danger">Refund</a></td>
 						</tr>
