@@ -264,7 +264,7 @@ a.open-link:hover {
 				<li class="list-item" th:each="account : ${banking}">
 				
 				
-				<a th:href="'user-page/banking/transactions?account_id=' + ${account.id}" class="btn btn-success" th:text="${account.name}"></a>
+				<a th:href="@{'/user-page/banking/transactions?account_id=' + ${account.id}}" class="btn btn-success" th:text="${account.name}"></a>
 				<span class="total" th:text="'$' + ${account.balance}"></span>
 				
 				

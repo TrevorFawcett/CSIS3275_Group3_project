@@ -9,11 +9,13 @@ import com.csis3275.login.model.User_group3;
 import com.csis3275.login.service.UserServiceImpl_group3;
 
 import com.csis3275.banking.model.BankingServiceImpl;
+import com.csis3275.banking.model.BankingTransServiceImpl;
 import com.csis3275.banking.model.Banking_group3;
 import com.csis3275.loan.model.LoanServiceImpl;
 import com.csis3275.loan.model.Loan_group3;
 import com.csis3275.Credit.model.CreditServiceImpl;
 import com.csis3275.Credit.model.Credit_group3;
+import com.csis3275.banking.model.BankingTrans_group3;
 
 
 @SpringBootApplication
@@ -28,7 +30,7 @@ public class Csis3275Group3ProjectApplication {
 
 	@Bean
 	CommandLineRunner demo(UserServiceImpl_group3 repository, BankingServiceImpl Bankingrepository,
-			CreditServiceImpl creditRepository, LoanServiceImpl loanRepository) {
+			CreditServiceImpl creditRepository, LoanServiceImpl loanRepository, BankingTransServiceImpl bankingTranService) {
 
 		return (args) -> {
 			// Use https://www.browserling.com/tools/bcrypt to encrypt your password before
@@ -60,6 +62,13 @@ public class Csis3275Group3ProjectApplication {
 			
 			Loan_group3 loan2 = new Loan_group3("Home Loan", 200000.0f, 3.5f, 7, 250000.0f, user2);
 			loanRepository.createLoans(loan2);
+			
+			BankingTrans_group3 bankingTrans1 = new BankingTrans_group3("Deposit", 100.0, "Deposit for savings", checkingAccount);
+			bankingTranService.createBankingTransaction(bankingTrans1);
+			
+			BankingTrans_group3 bankingTrans2 = new BankingTrans_group3("Withdrawal", 50.0, "ATM withdrawal", checkingAccount);
+			bankingTranService.createBankingTransaction(bankingTrans2);
+			
 		};
 	}
 

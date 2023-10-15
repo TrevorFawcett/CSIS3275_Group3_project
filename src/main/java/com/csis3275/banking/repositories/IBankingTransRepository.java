@@ -9,6 +9,6 @@ import com.csis3275.banking.model.BankingTrans_group3;
 
 public interface IBankingTransRepository extends CrudRepository<BankingTrans_group3, Long> {
 
-	@Query("SELECT bt FROM BankingTrans_group3 bt WHERE bt.account.id = :accountId")
+	@Query("SELECT bt FROM BankingTrans_group3 bt WHERE bt.banking.id = :accountId")
 	List<BankingTrans_group3> findAllById(Long accountId);
 }
