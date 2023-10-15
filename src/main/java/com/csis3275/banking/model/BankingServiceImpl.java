@@ -33,6 +33,12 @@ public class BankingServiceImpl {
 		return (List<Banking_group3>)bankingRepository.findAllById(id);
 	}
 	
+	//READ ONE
+	
+	public Banking_group3 readSingleBankingAccount(Long id) {
+		return bankingRepository.findById(id).get();
+	}
+	
     // Get all account balances by Id
     public List<Float> getAllAccountBalancesById(Long Id) {
         List<Banking_group3> accounts = (List<Banking_group3>) bankingRepository.findAllById(Id);

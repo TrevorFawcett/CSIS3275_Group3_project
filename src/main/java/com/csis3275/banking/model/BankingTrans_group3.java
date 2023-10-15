@@ -1,5 +1,7 @@
 package com.csis3275.banking.model;
 
+import java.util.Optional;
+
 import com.csis3275.login.model.User_group3;
 
 import jakarta.persistence.Entity;
@@ -19,10 +21,10 @@ public class BankingTrans_group3 {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long Id;
 	private String type;
-	private double amount;
+	private float amount;
 	private String description;
-	private double withdrawal;
-	private double deposit;
+	private float withdrawal;
+	private float deposit;
 	
 	
 	@ManyToOne
@@ -37,7 +39,7 @@ public class BankingTrans_group3 {
 
 
 
-	public BankingTrans_group3(String type, double amount, String description, double withdrawal, double deposit,
+	public BankingTrans_group3(String type, float amount, String description, float withdrawal, float deposit,
 			Banking_group3 banking) {
 		super();
 		this.type = type;
@@ -51,24 +53,24 @@ public class BankingTrans_group3 {
 	
 	
 
-	public double getWithdrawal() {
+	public float getWithdrawal() {
 		return withdrawal;
 	}
 
 
-	public void setWithdrawal(double withdrawal) {
+	public void setWithdrawal(float withdrawal) {
 		this.withdrawal = withdrawal;
 	}
 
 
 
-	public double getDeposit() {
+	public float getDeposit() {
 		return deposit;
 	}
 
 
 
-	public void setDeposit(double deposit) {
+	public void setDeposit(float deposit) {
 		this.deposit = deposit;
 	}
 
@@ -94,12 +96,12 @@ public class BankingTrans_group3 {
 	}
 
 
-	public double getAmount() {
+	public float getAmount() {
 		return amount;
 	}
 
 
-	public void setAmount(double amount) {
+	public void setAmount(float amount) {
 		this.amount = amount;
 	}
 
@@ -122,7 +124,8 @@ public class BankingTrans_group3 {
 	public void setBanking(Banking_group3 banking) {
 		this.banking = banking;
 	}
-	
+
+
 	
 	
 	

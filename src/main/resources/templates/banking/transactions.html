@@ -11,35 +11,35 @@
 <body>
 
 	<div class="container">
-		<h1>Transaction List</h1>
-		<td th:if="${userRole == 'USER'}"><a href="####"
-			class="btn btn-danger">Add Transaction</a></td>
-			
-			
-			
-		<table class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>Type</th>
-					<th>Amount</th>
-					<th>Description</th>
-					<th>Withdrawal</th>
-					<th>Deposit</th>
-					<th th:if="${userRole == 'ADMIN'}">Refund</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="transaction : ${bankingTrans}">
-					<td th:text="${transaction.type}"></td>
-					<td th:text="${transaction.amount}"></td>
-					<td th:text="${transaction.description}"></td>
-					<td th:text="${transaction.withdrawal}"></td>
-					<td th:text="${transaction.deposit}"></td>
-					<td th:if="${userRole == 'ADMIN'}"><a href="####"
-						class="btn btn-danger">Refund</a></td>
-				</tr>
-			</tbody>
-		</table>
+	
+	
+			<a th:if="${userRole == 'USER'}"th:href="@{'/user-page/banking/transactions/add?account_id=' + ${accountId}}" class="btn btn-success">
+			add transaction</a>
+
+			<h1>Transaction List</h1>
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Type</th>
+							<th>Amount</th>
+							<th>Description</th>
+							<th>Withdrawal</th>
+							<th>Deposit</th>
+							<th th:if="${userRole == 'ADMIN'}">Refund</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="transaction : ${bankingTrans}">
+							<td th:text="${transaction.type}"></td>
+							<td th:text="${transaction.amount}"></td>
+							<td th:text="${transaction.description}"></td>
+							<td th:text="${transaction.withdrawal}"></td>
+							<td th:text="${transaction.deposit}"></td>
+							<td th:if="${userRole == 'ADMIN'}"><a href="####"
+								class="btn btn-danger">Refund</a></td>
+						</tr>
+					</tbody>
+				</table>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
