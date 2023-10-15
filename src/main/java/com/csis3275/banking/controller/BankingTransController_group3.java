@@ -95,6 +95,7 @@ public class BankingTransController_group3 {
 				banking.setBalance((float) (banking.getBalance() + newTran.getAmount()));
 			}
 		
+			newTran.setRefunded(false);
 			bankingTransService.createBankingTransaction(newTran);
 			return "redirect:/user-page";
 		
@@ -120,6 +121,7 @@ public class BankingTransController_group3 {
 		newT.setDeposit(b.getAmount());
 		newT.setAmount(b.getAmount());
 		newT.setBanking(banking);
+		newT.setRefunded(true);
 		
 		
 		bankingTransService.createBankingTransaction(newT);
