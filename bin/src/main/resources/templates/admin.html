@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+	crossorigin="anonymous">
+<title>User Dashboard</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	background-color: black;
+	color: white;
+	margin: 0;
+	padding: 0;
+}
+
+.header {
+	background-color: black;
+	padding: 20px;
+	text-align: center;
+	color: #0e2433;
+}
+
+.header h1 {
+	margin: 0;
+	color: White;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 30px 30px 30px 30px;
+	padding: 20px;
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+	color: black;
+}
+
+
+.header button {
+	background: none;
+	border: none;
+	color: black;
+	padding: 10px;
+	position: absolute;
+	left: 20px; /* Adjust the left position as needed */
+	cursor: pointer;
+}
+
+h3 {
+	color: black;
+}
+
+
+
+
+</style>
+</head>
+<body>
+	<div class="header">
+		<h1>Admin Dashboard</h1>
+		<span sec:authorize="isAuthenticated"> <a class="btn btn-danger "th:href="@{/logout}">
+				Logout </a>
+
+		</span>
+	</div>
+
+
+	<div class="container">
+		<h2>Welcome, [[${user.getUsername()}]]</h2>
+
+		
+		<section id="list-users">
+			<h3>List of Users</h3>
+			<table class="table table-borderless table-bordered border border-dark border border-5">
+				<thead class="table table-dark ">
+					<tr>
+						<th>ID</th>
+						<th>Email</th>
+						<th>Role</th>
+						<th>Terminate</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Iterate over the list of users -->
+					<tr th:each="user : ${userInfo}">
+						<td th:text="${user.id}"></td>
+						<td th:text="${user.email}"></td>
+						<td th:text="${user.role}"></td>
+						<td><a th:href="@{'/your/link/path/' + ${user.id}}"
+							class="btn btn-danger">terminate</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+		<section id="list-banking">
+			<h3>Banking Accounts</h3>
+			<table class="table table-borderless table-bordered border border-dark border-5">
+				<thead class="table table-dark">
+					<tr>
+						<th>ID</th>
+						<th>Holder ID</th>
+						<th>Type</th>
+						<th>name</th>
+						<th>Balance</th>
+						<th>transactions</th>
+						<th>Terminate</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<!-- Iterate over the list of Banking Accounts-->
+					<tr th:each="banking : ${bankingInfo}">
+						<td th:text="${banking.id}"></td>
+						<td th:text="${banking.user.id}"></td>
+						<td th:text="${banking.type}"></td>
+						<td th:text="${banking.name}"><a th:href="###"
+							class="btn btn-info"></a></td>
+						<td th:text="${banking.balance}"></td>
+						<td><a th:href="@{'/your/link/path/' + ${banking.id}}"
+							class="btn btn-info">Transactions</a></td>
+						<td><a th:href="@{'/your/link/path/' + ${banking.id}}"
+							class="btn btn-danger">terminate</a></td>
+					</tr>
+
+				</tbody>
+			</table>
+		</section>
+		<section id="list-Credit">
+			<h3>Credit Card Accounts</h3>
+			<table class="table table-borderless table-bordered border border-dark border-5">
+				<thead class="table table-dark">
+					<tr>
+						<th>ID</th>
+						<th>Holder ID</th>
+						<th>Type</th>
+						<th>Credit Limit</th>
+						<th>Balance</th>
+						<th>transactions</th>
+						<th>Terminate</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Iterate over the list of Credit Card Accounts-->
+					<tr th:each="credit : ${creditInfo}">
+						<td th:text="${credit.id}"></td>
+						<td th:text="${credit.user.id}"></td>
+						<td th:text="${credit.type}"></td>
+						<td th:text="${credit.transfer}"></td>
+						<td th:text="${credit.balance}"></td>
+						<td><a th:href="@{'/your/link/path/' + ${credit.id}}"
+							class="btn btn-info">Transactions</a></td>
+						<td><a th:href="@{'/your/link/path/' + ${credit.id}}"
+							class="btn btn-danger">terminate</a></td>
+					</tr>
+
+				</tbody>
+			</table>
+		</section>
+		<section id="list-Loan">
+			<h3>Loans</h3>
+			<table class="table table-borderless table-bordered border border-dark border-5">
+				<thead class="table table-dark">
+					<tr>
+						<th>ID</th>
+						<th>Holder ID</th>
+						<th>Loan Type</th>
+						<th>Amount</th>
+						<th>rate</th>
+						<th>Loan term</th>
+						<th>Total to be paid</th>
+						<th>transactions</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Iterate over the list of loans-->
+					<tr th:each="loan : ${loanInfo}">
+						<td th:text="${loan.id}"></td> 
+						<td th:text="${loan.user.id}"></td>
+						<td th:text="${loan.type}"></td>
+						<td th:text="${loan.amount}"></td>
+						<td th:text="${loan.rate}"></td>
+						<td th:text="${loan.loanTerm}"></td>
+						<td th:text="${loan.totalToBePaid}"></td>
+						<td><a th:href="@{'/your/link/path/' + ${loan.id}}"
+							class="btn btn-info">Transactions</a></td>
+					</tr>
+
+				</tbody>
+			</table>
+		</section>
+		
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>

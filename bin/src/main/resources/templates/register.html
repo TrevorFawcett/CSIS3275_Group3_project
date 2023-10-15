@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html lang="en"> 
+
+ <head> 
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register_page.css}" />
+    
+ </head> 
+
+ <body> <!-- partial:index.partial.html --> 
+
+  <section> 
+   <div class="signin"> 
+
+    <div class="content"> 
+
+     <h2>Registration</h2> 
+	<form id="login-form" th:action="@{/newUser}" th:object="${accountData}" method="post">
+     <div class="form"> 
+
+      <div class="inputBox"> 
+
+       <input type="text" th:field="*{email}" required> <i>Email</i> 
+
+      </div> 
+
+      <div class="inputBox"> 
+
+       <input type="password" th:field="*{password}"  required> <i>Password</i> 
+
+      </div> 
+      <div class="inputBox"> 
+
+       <input type="text" th:field="*{firstName}"  required> <i>First Name</i> 
+
+      </div> 
+      <div class="inputBox"> 
+
+       <input type="text" th:field="*{lastName}"  required> <i>Last Name</i> 
+
+      </div> 
+
+
+      <div class="inputBox"> 
+
+       <input type="submit" value="SignUp"> 
+
+      </div> 
+
+     </div> <!--Form--></form>
+
+    </div> 
+
+   </div> 
+
+  </section> <!-- partial --> 
+
+ </body>
+
+</html>
