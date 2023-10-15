@@ -124,7 +124,7 @@ h3 {
 						<td th:text="${banking.name}"><a th:href="###"
 							class="btn btn-info"></a></td>
 						<td th:text="${banking.balance}"></td>
-						<td><a th:href="@{'/your/link/path/' + ${banking.id}}"
+						<td><a th:href="@{'/user-page/banking/transactions?account_id=' + ${banking.id}}"
 							class="btn btn-info">Transactions</a></td>
 						<td><a th:href="@{'/your/link/path/' + ${banking.id}}"
 							class="btn btn-danger">terminate</a></td>

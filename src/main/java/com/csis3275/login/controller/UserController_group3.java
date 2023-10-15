@@ -70,6 +70,7 @@ public class UserController_group3 {
 		
 		UserDetails userDetails = userDetailsService.loadUserByUsername(principal.getName());
 		User_group3 currentUser = repository.getUserByEmail(username);
+		
 		 
 		
 		 // Get all account balances
