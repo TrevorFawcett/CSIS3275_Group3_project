@@ -63,10 +63,10 @@ public class Csis3275Group3ProjectApplication {
 			Loan_group3 loan2 = new Loan_group3("Home Loan", 200000.0f, 3.5f, 7, 250000.0f, user2);
 			loanRepository.createLoans(loan2);
 			
-			BankingTrans_group3 bankingTrans1 = new BankingTrans_group3("Deposit", 100.0, "Deposit for savings", checkingAccount);
+			BankingTrans_group3 bankingTrans1 = new BankingTrans_group3("Deposit", 100.0, "Deposit for savings", 0.0, 100.0, checkingAccount);
 			bankingTranService.createBankingTransaction(bankingTrans1);
 			
-			BankingTrans_group3 bankingTrans2 = new BankingTrans_group3("Withdrawal", 50.0, "ATM withdrawal", checkingAccount);
+			BankingTrans_group3 bankingTrans2 = new BankingTrans_group3("Withdrawal", 50.0, "ATM withdrawal", 50.0, 0.0, checkingAccount);
 			bankingTranService.createBankingTransaction(bankingTrans2);
 			
 		};
