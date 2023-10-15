@@ -33,11 +33,20 @@ public class BankingServiceImpl {
 		return (List<Banking_group3>)bankingRepository.findAllById(id);
 	}
 	
-	//READ ONE
+	//READ ONE 
 	
 	public Banking_group3 readSingleBankingAccount(Long id) {
 		return bankingRepository.findById(id).get();
 	}
+	
+	
+	//DELETE
+	public void DeleteAccount(Long id) {
+		bankingRepository.deleteById(id);
+	}
+	
+	
+	
 	
     // Get all account balances by Id
     public List<Float> getAllAccountBalancesById(Long Id) {
