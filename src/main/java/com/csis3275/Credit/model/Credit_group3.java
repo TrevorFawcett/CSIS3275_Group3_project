@@ -1,13 +1,18 @@
 package com.csis3275.Credit.model;
 
+import java.util.List;
+
+import com.csis3275.banking.model.BankingTrans_group3;
 import com.csis3275.login.model.User_group3;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
@@ -30,6 +35,12 @@ public class Credit_group3 {
 	@ManyToOne
     @JoinColumn(name = "user_id") // Define the foreign key column
 	private User_group3 user;
+	
+	
+	@OneToMany(mappedBy = "credit", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CreditTrans_group3> creditTransactions;
+    
+    
 
 	public Credit_group3() {
 		super();

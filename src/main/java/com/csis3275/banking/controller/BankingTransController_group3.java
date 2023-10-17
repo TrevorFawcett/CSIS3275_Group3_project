@@ -43,7 +43,7 @@ public class BankingTransController_group3 {
 	UserDetailsService userDetailsService;
 	
 	@Autowired
-	private UserServiceImpl_group3 userService;
+	UserServiceImpl_group3 userService;
 	
 	
 	

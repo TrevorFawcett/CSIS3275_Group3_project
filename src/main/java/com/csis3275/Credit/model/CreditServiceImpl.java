@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.csis3275.Credit.Repositories.ICreditRepository;
 import com.csis3275.Credit.model.Credit_group3;
+import com.csis3275.banking.model.Banking_group3;
 
 @Service
 public class CreditServiceImpl {
@@ -28,6 +29,16 @@ public class CreditServiceImpl {
 	public List<Credit_group3> readCreditCardAccountsById(Long Id) {
 		return (List<Credit_group3>) creditService.findAllById(Id);
 	}
+	
+	//READ BY ONE
+	public Credit_group3 readSingleCreditAccount(Long id) {
+		return creditService.findById(id).get();
+	}
+	
+	//DELETE
+		public void DeleteAccount(Long id) {
+			creditService.deleteById(id);
+		}
 
 	// Get all account balances by Id
 	public List<Float> getAllAccountBalancesById(Long Id) {
