@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.csis3275.Credit.model.CreditServiceImpl;
 import com.csis3275.Credit.model.Credit_group3;
+import com.csis3275.banking.model.Banking_group3;
 import com.csis3275.login.model.User_group3;
 import com.csis3275.login.service.UserServiceImpl_group3;
 
@@ -28,6 +30,21 @@ public class CreditController_group3 {
 	public String addCreditCardAccount(Model model) {
 		model.addAttribute("creditToAdd", new Credit_group3());
 		return "/credit/add";
+	}
+	
+	
+	@GetMapping("/user-page/credit/delete")
+	public String deleteCreditAccount(Model model, @RequestParam("account_id") Long Id) {
+		
+		Credit_group3 credit = creditService.readSingleCreditAccount(Id);
+		
+		if(credit.getBalance() <= 0 ) {
+			creditService.DeleteAccount(Id);
+		}
+		
+		
+		
+		return "redirect:/admin-page";
 	}
 
 	@PostMapping("/user-page/credit/add")

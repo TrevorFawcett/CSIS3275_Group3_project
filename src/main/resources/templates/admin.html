@@ -154,9 +154,9 @@ h3 {
 						<td th:text="${credit.type}"></td>
 						<td th:text="${credit.transfer}"></td>
 						<td th:text="${credit.balance}"></td>
-						<td><a th:href="@{'/your/link/path/' + ${credit.id}}"
+						<td><a th:href="@{'/user-page/credit/transactions?account_id=' + ${credit.id}}"
 							class="btn btn-info">Transactions</a></td>
-						<td><a th:href="@{'/your/link/path/' + ${credit.id}}"
+						<td><a th:href="@{'/user-page/credit/delete?account_id=' + ${credit.id}}"
 							class="btn btn-danger">terminate</a></td>
 					</tr>
 
