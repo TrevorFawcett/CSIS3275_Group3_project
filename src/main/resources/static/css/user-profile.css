@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+
+.main-box {
+  border: 5px solid;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.edit-box {
+  border: 5px solid;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}

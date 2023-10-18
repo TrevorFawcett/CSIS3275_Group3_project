@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.csis3275.login.model.UserAccountDto_group3;
 import com.csis3275.login.model.UserAccount_group3;
-
+import com.csis3275.login.model.User_group3;
 import com.csis3275.login.repositories.AccountRepository_group3;
 
 @Service
@@ -32,6 +32,15 @@ public class AccountServiceImpl_group3 implements AccountService_group3 {
 				return accountRepository.save(account);
 		}
 		
+		public UserAccount_group3 getUserByEmail(String email) {
+	        return accountRepository.findByEmail(email);
+	    }
+		
+		public UserAccount_group3 updateProfile(UserAccount_group3 data) {
+			
+			
+			return accountRepository.save(data);
+		}
 		
 	
 }

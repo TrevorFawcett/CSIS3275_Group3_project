@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>User Profile</title>
+<!-- <link rel="stylesheet" type="text/css" th:href="@{/css/user-profile.css}" />  -->
+</head>
+<body>
+
+<h1>User info Edit Form</h1>
+<form action ="#" th:action="@{/change}" th:object="${editInfo}" method="post" >
+
+
+
+<label for="fname">First name:</label><br>
+<input type="text" id="fname" name="fname" th:value ="${editInfo.firstName}" th:field="${editInfo.firstName}"  ><br>
+<label >Last name:</label><br>
+<input type="text" th:value ="${editInfo.lastName}" th:field="${editInfo.lastName}"  ><br>
+<label >Phone Number:</label><br>
+<input type="text" th:value ="${editInfo.phone}" th:field="${editInfo.phone}"  ><br>
+
+<label >Date of Birth:</label><br>
+<input type="date" th:value ="${editInfo.dateofbirth}" th:field="${editInfo.dateofbirth}"  ><br>
+
+<label >Address:</label><br>
+<input type="text" th:value ="${editInfo.address}" th:field="${editInfo.address}"  ><br>
+<input type="hidden" th:value ="${editInfo.accountNumber}" th:field="${editInfo.accountNumber}" readOnly>
+<input type="hidden" th:value ="${editInfo.email}" th:field="${editInfo.email}" readOnly> 
+ 
+ <input type="submit" value="Submit" />
+
+
+
+
+</form>
+
+</body>
+</html>

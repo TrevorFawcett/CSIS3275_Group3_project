@@ -1,5 +1,7 @@
 package com.csis3275.login.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +20,12 @@ public class UserAccount_group3 {
 	private String password;
 	private String firstName;
 	private String lastName;
+	
+	private String phone;
+	private String address;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private String dateofbirth;
 	
 	public UserAccount_group3() {
 		super();
@@ -67,6 +75,31 @@ public class UserAccount_group3 {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getDateofbirth() {
+		return dateofbirth;
+	}
+
+	public void setDateofbirth(String dateofbirth) {
+		this.dateofbirth = dateofbirth;
+	}
+	
 	
 	
 }
