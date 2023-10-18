@@ -2,10 +2,16 @@ package com.csis3275.login.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+<<<<<<< Updated upstream
+=======
+import jakarta.persistence.CascadeType;
+>>>>>>> Stashed changes
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
@@ -27,6 +33,13 @@ public class UserAccount_group3 {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private String dateofbirth;
 	
+<<<<<<< Updated upstream
+=======
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "accountNumber", referencedColumnName = "accNumber")
+    private User_group3 user;
+	
+>>>>>>> Stashed changes
 	public UserAccount_group3() {
 		super();
 	}
