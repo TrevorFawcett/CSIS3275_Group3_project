@@ -11,7 +11,7 @@
 	<nav>
 		<div>
 			<a href="#user">Accounts</a> 
-			<a href="#profile">Profile &
+			<a th:href="@{/profile}">Profile &
 				Account Settings</a> 
 			<a href="#advising">Financial Advising</a>
 		</div>
@@ -69,7 +69,7 @@
 			<ul class="list">
 				<li class="list-item" th:each="account : ${credit}">
 
-				<a th:href="@{'/user-page/credit/transactions?account_id=' + ${account.id}}" class="btn btn-success"     
+				<a id="account-link" th:href="@{'/user-page/credit/transactions?account_id=' + ${account.id}}" class="btn btn-success"     
 
 					th:text="${account.name}"></a> <span class="total"
 					th:text="'$' + ${account.balance}"></span></li>

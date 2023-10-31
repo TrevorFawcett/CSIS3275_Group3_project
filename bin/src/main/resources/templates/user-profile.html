@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>User Profile</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/user-profile.css}" /> 
+</head>
+<body>
+
+<!-- 
+First Name
+Last Name
+Email
+Phone
+Date of Birth
+Address 
+ -->
+
+<div class = "main-box">
+	<H1>User Profile</H1>
+	
+	<label> Full Name: </label>
+	<h3 th:text = "${accountInfo.firstName} + ' ' + ${accountInfo.lastName}"></h3>
+	<label> Email: </label>
+	<h3 th:text = "${accountInfo.email}"></h3>
+	<label>Phone Number: </label>
+	<h3 th:text = "${accountInfo.phone}"></h3>
+	<label>Date of Birth: </label>
+	<h3 th:text = "${accountInfo.dateofbirth}"></h3>
+	<label>Address: </label>
+	<h3 th:text = "${accountInfo.address}"></h3>
+
+</div>
+
+
+<div class = "edit-box">
+	<form action="#" th:action="@{/profileEdit}" method="post">
+         <button type="submit">Edit user information</button>
+      </form>
+</div> 
+ 
+
+
+</body>
+</html>
