@@ -22,6 +22,7 @@ import com.csis3275.loan.model.LoanServiceImpl;
 import com.csis3275.login.model.AccountGenerator_group3;
 import com.csis3275.login.model.FormData_group3;
 import com.csis3275.login.model.UserAccountDto_group3;
+import com.csis3275.login.model.UserAccount_group3;
 import com.csis3275.login.model.UserDto_group3;
 import com.csis3275.login.model.User_group3;
 import com.csis3275.login.service.AccountServiceImpl_group3;
@@ -40,6 +41,9 @@ public class UserController_group3 {
 	
 	@Autowired
 	private UserServiceImpl_group3 repository;
+	
+	@Autowired
+	private AccountServiceImpl_group3 accRepository;
 	
 	@Autowired
 	private AccountServiceImpl_group3 accountService;
@@ -149,6 +153,41 @@ public class UserController_group3 {
 		
 		
 		return "redirect:/";
+	}
+	
+	@GetMapping("/profile")
+	public String userProfile(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = authentication.getName();
+		
+		
+		UserAccount_group3 currentUser = accRepository.getUserByEmail(username);
+		
+		model.addAttribute("accountInfo", currentUser);
+		
+		
+		return "user-profile";
+	}
+	
+	@PostMapping("/profileEdit")
+	public String profielEdit(Model model) {
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = authentication.getName();
+		
+		UserAccount_group3 currentUser = accRepository.getUserByEmail(username);
+		
+		model.addAttribute("editInfo", currentUser); 
+		
+		return "user-profile-edit"; 
+	}
+	
+	@PostMapping("/change")
+	public String accountEditUpdate(@ModelAttribute UserAccount_group3 updateUser, Model model) {
+			accRepository.updateProfile(updateUser);
+		
+		
+		return "redirect:/profile";
 	}
 	
 }

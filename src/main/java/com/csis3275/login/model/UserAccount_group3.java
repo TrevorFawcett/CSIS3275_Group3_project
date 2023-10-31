@@ -1,9 +1,16 @@
 package com.csis3275.login.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+
+import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
@@ -19,6 +26,18 @@ public class UserAccount_group3 {
 	private String firstName;
 	private String lastName;
 	
+	private String phone;
+	private String address;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private String dateofbirth;
+	
+
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "accountNumber", referencedColumnName = "accNumber")
+    private User_group3 user;
+	
+
 	public UserAccount_group3() {
 		super();
 	}
@@ -67,6 +86,31 @@ public class UserAccount_group3 {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getDateofbirth() {
+		return dateofbirth;
+	}
+
+	public void setDateofbirth(String dateofbirth) {
+		this.dateofbirth = dateofbirth;
+	}
+	
 	
 	
 }

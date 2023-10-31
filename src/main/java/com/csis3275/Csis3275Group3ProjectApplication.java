@@ -38,14 +38,9 @@ public class Csis3275Group3ProjectApplication {
 			// Use https://www.browserling.com/tools/bcrypt to encrypt your password before
 			// adding a test user to database
 
-			// User for testing login and authentication email = admin@fake.com, password =
-			// password
-			User_group3 user1 = new User_group3("admin@fake.com",
-					"$2a$10$57VDThG1aa./iRozB98QeuPtzADsVY0vfqcKehoDZ9USKe4pu3b22", "ADMIN", (long) 1);
-			repository.createUser(user1);
-			User_group3 user2 = new User_group3("user@fake.com",
-					"$2a$10$57VDThG1aa./iRozB98QeuPtzADsVY0vfqcKehoDZ9USKe4pu3b22", "USER", (long) 2);
-			repository.createUser(user2);
+			// User for testing login and authentication email = admin@fake.com, password = password
+			
+			User_group3 user2 = repository.readUsers().get(1);
 
 			Banking_group3 checkingAccount = new Banking_group3("Checking Account", 1000.00f, 1000, "Checking", user2);
 			Bankingrepository.createBankingAccounts(checkingAccount);
@@ -77,6 +72,7 @@ public class Csis3275Group3ProjectApplication {
 			
 	        CreditTrans_group3 transaction2 = new CreditTrans_group3("Payment", "Monthly bill", -100.0f, rewardsAccount, false);
 	        creditTransService.createCreditTransaction(transaction2);
+	        
 			
 		};
 	}

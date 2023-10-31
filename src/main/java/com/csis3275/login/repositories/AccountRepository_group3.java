@@ -9,5 +9,5 @@ import com.csis3275.login.model.User_group3;
 @Repository
 public interface AccountRepository_group3 extends CrudRepository<UserAccount_group3, Long> {
 
-	//UserAccount_group3 findByEmail (String email);
+	UserAccount_group3 findByEmail (String email);
 }
