@@ -22,9 +22,7 @@ public class CustomUserDetail_group3 implements UserDetails {
 		return List.of(() -> user.getRole());
 	}
 	
-	public Long getNumber() {
-		return user.getAccNumber();
-	}
+	
 
 	@Override
 	public String getPassword() {

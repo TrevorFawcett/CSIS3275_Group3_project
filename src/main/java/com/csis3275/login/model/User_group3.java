@@ -17,9 +17,10 @@ import java.util.List;
 //import java.io.Serializable;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.csis3275.banking.model.Banking_group3;
-import com.csis3275.login.model.AccountGenerator_group3;
+
 
 @Entity
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
@@ -28,25 +29,29 @@ public class User_group3 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String email;
 	private String password;
 	private String role;
-	private Long accNumber;
+	private String firstName;
 	
-	@OneToOne(mappedBy = "user")
-	private UserAccount_group3 account; 
-
+	private String lastName;
+	private String phone;
+	private String address;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private String dateofbirth;
 	
 	public User_group3() {
 		super();
 	}
 
-	public User_group3(String email, String password, String role, Long accNumber) {
+	public User_group3(String email, String password, String role, String firstName) {
 		
 		this.email = email;
 		this.password = password;
 		this.role = role;
-		this.accNumber = accNumber;
+		this.firstName = firstName;
 	}
 
 	public Long getId() {
@@ -81,15 +86,45 @@ public class User_group3 {
 		this.role = role;
 	}
 
-	public Long getAccNumber() {
-		return accNumber;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setAccNumber(Long accNumber) {
-		this.accNumber = accNumber;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getDateofbirth() {
+		return dateofbirth;
+	}
+
+	public void setDateofbirth(String dateofbirth) {
+		this.dateofbirth = dateofbirth;
+	}
 	
 	
 }

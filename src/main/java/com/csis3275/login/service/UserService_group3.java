@@ -5,7 +5,7 @@ import com.csis3275.login.model.User_group3;
 
 public interface UserService_group3 {
 	
-	User_group3 save (UserDto_group3 userDto);
+	User_group3 save (User_group3 userDto);
 	
 
 }

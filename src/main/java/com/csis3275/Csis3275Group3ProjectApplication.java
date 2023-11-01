@@ -29,6 +29,7 @@ public class Csis3275Group3ProjectApplication {
 		
 	}
 
+	
 	@Bean
 	CommandLineRunner demo(UserServiceImpl_group3 repository, BankingServiceImpl Bankingrepository,
 			CreditServiceImpl creditRepository, LoanServiceImpl loanRepository, CreditTransServiceImpl creditTransService
@@ -42,6 +43,7 @@ public class Csis3275Group3ProjectApplication {
 			
 			User_group3 user2 = repository.readUsers().get(1);
 
+			
 			Banking_group3 checkingAccount = new Banking_group3("Checking Account", 1000.00f, 1000, "Checking", user2);
 			Bankingrepository.createBankingAccounts(checkingAccount);
 
@@ -74,7 +76,7 @@ public class Csis3275Group3ProjectApplication {
 	        creditTransService.createCreditTransaction(transaction2);
 	        
 			
-		};
-	}
+		}; 
+	} 
 
 }

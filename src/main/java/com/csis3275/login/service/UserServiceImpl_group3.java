@@ -12,6 +12,8 @@ import com.csis3275.login.model.User_group3;
 import com.csis3275.login.repositories.UserRepository_group3;
 
 
+
+
 @Service
 public class UserServiceImpl_group3 implements UserService_group3 {
 	
@@ -21,10 +23,16 @@ public class UserServiceImpl_group3 implements UserService_group3 {
 	@Autowired
 	private UserRepository_group3 userRepository;
 
+	public User_group3 updateProfile(User_group3 data) {
+		
+		return userRepository.save(data);
+		
+	}
+
 	@Override
-	public User_group3 save(UserDto_group3 userDto) {
-		User_group3 user = new User_group3(userDto.getEmail(), passwordEncoder.encode(userDto.getPassword()) , userDto.getRole(), userDto.getAccNumber());
-		return userRepository.save(user);
+	public User_group3 save(User_group3 user) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	//READ

@@ -26,10 +26,12 @@
 
 <label >Address:</label><br>
 <input type="text" th:value ="${editInfo.address}" th:field="${editInfo.address}"  ><br>
-<input type="hidden" th:value ="${editInfo.accountNumber}" th:field="${editInfo.accountNumber}" readOnly>
+
 <input type="hidden" th:value ="${editInfo.email}" th:field="${editInfo.email}" readOnly> 
+<input type="hidden" th:value ="${editInfo.id}" th:field="${editInfo.id}" readOnly> 
  
  <input type="submit" value="Submit" />
+
 
 
 
