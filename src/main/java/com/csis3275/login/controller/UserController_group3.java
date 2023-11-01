@@ -21,12 +21,10 @@ import com.csis3275.banking.model.BankingServiceImpl;
 import com.csis3275.loan.model.LoanServiceImpl;
 
 import com.csis3275.login.model.FormData_group3;
-import com.csis3275.login.model.UserAccountDto_group3;
-import com.csis3275.login.model.UserAccount_group3;
+
 import com.csis3275.login.model.UserDto_group3;
 import com.csis3275.login.model.User_group3;
-import com.csis3275.login.service.AccountServiceImpl_group3;
-import com.csis3275.login.service.AccountService_group3;
+
 import com.csis3275.login.service.UserServiceImpl_group3;
 import com.csis3275.login.service.UserService_group3;
 
@@ -45,12 +43,6 @@ public class UserController_group3 {
 	private UserServiceImpl_group3 repository;
 	
 	@Autowired
-	private AccountServiceImpl_group3 accRepository;
-	
-	@Autowired
-	private AccountServiceImpl_group3 accountService;
-	
-	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
@@ -62,6 +54,11 @@ public class UserController_group3 {
 	@Autowired
 	private LoanServiceImpl loanService;
 	
+	
+	@GetMapping("/")
+	public String home() {
+		return "landing_page";
+	}
 	
 	@GetMapping("/login")
 	public String login() {
@@ -135,24 +132,7 @@ public class UserController_group3 {
 	}
 
 	@PostMapping("/newUser") public String registerUser(@ModelAttribute("accountData") FormData_group3 dataset ,Model model){ 
-		//AccountGenerator_group3 gen = new AccountGenerator_group3();
-		//ArrayList<User_group3> userList = repository.readUsers();
 		
-		
-//		Long x;
-//		do {
-//		x = gen.generateNumber();
-//		}while(gen.checkDB(userList, x));
-		
-		
-		
-		//UserAccountDto_group3 newAccount = new UserAccountDto_group3(dataset.getEmail(),dataset.getPassword(),dataset.getFirstName(),
-				//dataset.getLastName(),x);
-		//accountService.createAccount(newAccount);
-		//email, password(hash), "USER", accountNumber
-		//User_group3 newUser = new User_group3(newAccount.getEmail(),passwordEncoder.encode(newAccount.getPassword()),"USER",newAccount.getAccountNumber());
-		//User_group3 newUser = new User_group3(dataset.getEmail(),passwordEncoder.encode(dataset.getPassword()),"USER",dataset.getFirstName());
-		//repository.createUser(newUser);
 		
 		User_group3 newUser = new User_group3(dataset.getEmail(), passwordEncoder.encode(dataset.getPassword()), "USER",
 				dataset.getFirstName());
@@ -169,7 +149,7 @@ public class UserController_group3 {
 		String username = authentication.getName();
 		
 		User_group3 currentUser = repository.getUserByEmail(username);
-		//UserAccount_group3 currentUser = accRepository.getUserByEmail(username);
+		
 		
 		model.addAttribute("accountInfo", currentUser);
 		
@@ -183,7 +163,7 @@ public class UserController_group3 {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String username = authentication.getName();
 		
-		//UserAccount_group3 currentUser = accRepository.getUserByEmail(username);
+	
 		User_group3 currentUser = repository.getUserByEmail(username);
 		
 		model.addAttribute("editInfo", currentUser); 
@@ -193,7 +173,7 @@ public class UserController_group3 {
 	
 	@PostMapping("/change")
 	public String accountEditUpdate(@ModelAttribute User_group3 updateUser, Model model) {
-			//accRepository.updateProfile(updateUser);
+			
 		repository.updateProfile(updateUser);
 		
 		return "redirect:/profile";
