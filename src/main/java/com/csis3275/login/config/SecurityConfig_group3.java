@@ -57,7 +57,7 @@ public class SecurityConfig_group3 {
         	.csrf(csrf -> csrf
             .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")))
 		
-		.formLogin(form -> form.loginPage("/").loginProcessingUrl("/login")
+		.formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login")
 				.successHandler(customSuccessHandler).permitAll())
 		
 		.logout(form -> form.invalidateHttpSession(true).clearAuthentication(true)

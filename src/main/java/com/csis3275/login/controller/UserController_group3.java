@@ -55,10 +55,7 @@ public class UserController_group3 {
 	private LoanServiceImpl loanService;
 	
 	
-	@GetMapping("/")
-	public String home() {
-		return "landing_page";
-	}
+	
 	
 	@GetMapping("/login")
 	public String login() {
