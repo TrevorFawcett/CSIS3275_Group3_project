@@ -1,11 +1,13 @@
 @charset "ISO-8859-1";
 nav {
-	background-color: #0f0;
+	background-color: #1f6f78;
 	padding: 10px 0;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	color: black;
+	border: 3px solid;
+	border-color: #3baea0;
 
 }
 
@@ -23,19 +25,20 @@ nav a {
 
 
 nav a:hover {
-	background-color: seagreen;
+	background-color: #93e4c1;
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;
-  gap: 10px;
-  background-color: #2196F3;
-  padding: 10px;
-}
+  gap: 6px;
+  padding: 6px;
+  color: #93e4c1;
+  background-color: #1f6f78;
+  }
 
 .grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #118a7e;
   text-align: center;
   padding: 20px 0;
   font-size: 30px;

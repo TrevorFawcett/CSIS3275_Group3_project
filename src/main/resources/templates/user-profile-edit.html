@@ -6,9 +6,13 @@
 
 <title>User Profile</title>
 <!-- <link rel="stylesheet" type="text/css" th:href="@{/css/user-profile.css}" />  -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/profile-edit-form.css}" />
+
+
 </head>
 <body>
 
+<div class="form-box">
 <h1>User info Edit Form</h1>
 <form action ="#" th:action="@{/change}" th:object="${editInfo}" method="post" >
 
@@ -33,10 +37,8 @@
  <input type="submit" value="Submit" />
 
 
-
-
-
 </form>
+</div>
 
 </body>
 </html>

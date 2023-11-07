@@ -1,15 +1,49 @@
 @charset "ISO-8859-1";
 
+body
+{
+	background-color: #1f6f78;
+}
+
 .main-box {
-  border: 5px solid;
+  border: 3px solid;
   margin: auto;
   width: 50%;
   padding: 10px;
+  background-color: #118a7e;
+  color: #93e4c1;
+  
 }
 
 .edit-box {
-  border: 5px solid;
+  border: 3px solid;
   margin: auto;
   width: 50%;
   padding: 10px;
+  background-color: #118a7e;
+  color: #93e4c1;
+}
+
+nav {
+	background-color: #118a7e;
+	padding: 10px 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: black;
+	border: 3px solid;
+	border-color: #93e4c1;
+	height: 80px;
+
+}
+
+nav a {
+	color: black;
+	text-decoration: none;
+	padding: 8px 16px;
+	
+}
+
+nav a:hover {
+	background-color: #93e4c1;
 }
