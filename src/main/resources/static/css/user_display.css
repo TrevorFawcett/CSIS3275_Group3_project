@@ -5,14 +5,14 @@ nav {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	color: black;
+	color: rgb(255, 255, 255);
 	border: 3px solid;
 	border-color: #3baea0;
 
 }
 
 nav a {
-	color: black;
+	color: rgb(255, 255, 255);
 	text-decoration: none;
 	padding: 8px 16px;
 	
@@ -33,7 +33,7 @@ nav a:hover {
   grid-template-columns: auto auto;
   gap: 6px;
   padding: 6px;
-  color: #93e4c1;
+  color: rgb(255, 255, 255);
   background-color: #1f6f78;
   }
 
@@ -56,59 +56,43 @@ grid-column-start: 2;
   grid-row-end: 3;
 }
 
-
-
-
-
-
-
-
-/*
-.subcontainer {
-	
-	background-color: #333;
-	color:#0f0;
-	border-radius: 5px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	padding: 20px;
-	margin-right: 20px;
-	
-	
-}
-
-.banking {
-	
-  	margin-left:40%;
+.user-profile {
+	background-color: #93e4c1;
 }
 
 
-
-
-body {
-	font-family: Arial, sans-serif;
-	background-color: #333;
-	color: white;
-	margin: 0;
-	padding: 0;
+.profile-main-box {
+  border: 3px solid;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  background-color: #118a7e;
+  color:  rgb(255, 255, 255); 
+  border-color: #3baea0;
+  
 }
 
-
-
-.header h1 {
-	margin: 0;
+.edit-box {
+  border: 3px solid;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  background-color: #118a7e;
+  color: #3baea0;
 }
 
-.container {
-	position: relative;
-	max-width: 70%;
-	margin: 20px auto;
-	padding: 20px;
-	background-color: #0f0;
-	border-radius: 5px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+.edit-form
+{
+	background-color: #1f6f78;
 }
 
-.transfer-container{
-	color: black;
+.form-box {
+  border: 3px solid;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  background-color: #118a7e;
+  color: #93e4c1;
+  
 }
-*/
+
