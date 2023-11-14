@@ -15,7 +15,7 @@ import com.csis3275.login.model.User_group3;
 import com.csis3275.login.service.UserServiceImpl_group3;
 
 @Controller
-public class LoanController {
+public class LoanController_group3 {
 	
 	@Autowired
 	private LoanServiceImpl loanService;
