@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.csis3275.Credit.model.CreditServiceImpl;
 import com.csis3275.banking.model.BankingServiceImpl;
+import com.csis3275.investment.Stock;
 import com.csis3275.loan.model.LoanServiceImpl;
 
 import com.csis3275.login.model.FormData_group3;
@@ -63,7 +64,10 @@ public class UserController_group3 {
 	}
 	
 	@GetMapping("/invest-page")
-	public String investPage() {
+	public String investPage(Model model, Stock stock) {
+		
+     
+        model.addAttribute("info", stock.getStockBySymbol());
 		
 		return "investment";
 	}
