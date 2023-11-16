@@ -62,6 +62,12 @@ public class UserController_group3 {
 		return "login";
 	}
 	
+	@GetMapping("/invest-page")
+	public String investPage() {
+		
+		return "investment";
+	}
+	
 	@GetMapping("user-page")
 	public String userPage (Model model, Principal principal) {
 		
