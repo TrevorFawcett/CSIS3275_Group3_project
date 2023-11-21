@@ -119,7 +119,8 @@
 			
 			<ul class="list">
 				<li class="list-item" th:each="account : ${loan}">
-				<a id="account-link" th:href="'/user-page/loans/transactions?account_id=' + ${account.id}}" class="btn btn-success"     
+				<!-- '/user-page/loans/transactions?account_id=' + ${account.id}} -->
+				<a id="account-link" th:href="'/user-page/loans/transactions?account_id=' + ${account.id}" class="btn btn-success"     
 					th:text="${account.type}"></a> <span class="total"
 					th:text="'$' + ${account.totalToBePaid}"></span></li>
 				<li class="list-item"><span>Total</span> <span class="total"

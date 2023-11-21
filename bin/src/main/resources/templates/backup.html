@@ -7,13 +7,14 @@
 <title>User Dashboard</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/user_display.css}" />
 </head>
-
 <body>
 	<nav>
 		<div>
 			<a href="#user">Accounts</a> 
 
-			<a th:href="@{/profile}" >Profile & Account Settings</a> 
+			<a th:href="@{/profile}">Profile &
+
+				Account Settings</a> 
 			<a href="#advising">Financial Advising</a>
 		</div>
 		<div class="dropdown-container ml-auto">
@@ -23,10 +24,17 @@
 			</div>
 		</div>
 	</nav>
+
+
+	<div class="container" >
 	
-	<div class = "grid-container">
-<div class="item1">
-	<div class="banking">
+	
+	
+	
+	
+		
+		<!-- <div class="subcontainer"  >
+			<div class="banking">
 			<h2>Banking Accounts</h2>
 
 
@@ -55,37 +63,15 @@
                 </svg> Open a Banking Account
 			</a>
 			</div>
-</div>
- 
- 
-  <div class="item2">
-  <h2>Transfer Money</h2>
-			<form>
-				<div class="form-group">
-					<label for="fromAccount">From Account</label> <select
-						class="form-control" id="fromAccount">
-						<option value="checking">Checking Account</option>
-						<option value="savings">Savings Account</option>
-						<option value="creditCard">Credit Card</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="toAccount">To Account</label> <select
-						class="form-control" id="toAccount">
-						<option value="checking">Checking Account</option>
-						<option value="savings">Savings Account</option>
-						<option value="creditCard">Credit Card</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="amount">Amount</label> <input type="text"
-						class="form-control" id="amount" placeholder="Enter the amount">
-				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
-			</form>
-  </div>
-  <div class="item3">
-  <div class="banking">
+		</div> -->
+			
+		
+		
+
+
+
+		<!-- <div class="subcontainer" >
+			<div class="banking">
 			<h2>Credit Cards</h2>
 			
 			<ul class="list">
@@ -110,16 +96,18 @@
                 </svg> Open a Credit Card
 			</a>
 			</div>
-  </div>  
-  
-  
-  <div class="item6">
-  <div class="banking">
+		</div> -->
+
+
+
+
+		<!-- <div class="subcontainer" >
+			<div class="banking">
 			<h2>Loans</h2>
 			
 			<ul class="list">
 				<li class="list-item" th:each="account : ${loan}">
-				<a id="account-link" th:href="'/user-page/loans/transactions?account_id=' + ${account.id}}" class="btn btn-success"     
+				<a id="account-link" th:href="'#account-' + ${account.id}" class="btn btn-success"     
 					th:text="${account.type}"></a> <span class="total"
 					th:text="'$' + ${account.totalToBePaid}"></span></li>
 				<li class="list-item"><span>Total</span> <span class="total"
@@ -135,15 +123,43 @@
                 </svg> Open a Loan
 			</a>
 		</div>
-  </div>
- 
-  <div class="item8">8</div>  
-</div>
-	
-	
-	
-	
-	
+		</div> -->
 
-	
-</body>	
+
+		<!-- <div class="transfer-container">
+			<h2>Transfer Money</h2>
+			<form>
+				<div class="form-group">
+					<label for="fromAccount">From Account</label> <select
+						class="form-control" id="fromAccount">
+						<option value="checking">Checking Account</option>
+						<option value="savings">Savings Account</option>
+						<option value="creditCard">Credit Card</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="toAccount">To Account</label> <select
+						class="form-control" id="toAccount">
+						<option value="checking">Checking Account</option>
+						<option value="savings">Savings Account</option>
+						<option value="creditCard">Credit Card</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="amount">Amount</label> <input type="text"
+						class="form-control" id="amount" placeholder="Enter the amount">
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div> -->
+	</div>
+
+
+
+	<!--<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>-->
+</body>
+</html>
+
