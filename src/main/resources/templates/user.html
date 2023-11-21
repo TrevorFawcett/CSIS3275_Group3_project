@@ -15,7 +15,7 @@
 
 			<a th:href="@{/profile}" >Profile & Account Settings</a> 
 			<a href="#advising">Financial Advising</a>
-			<a th:href="@{/invest-page}">Investment</a>
+			<a th:if="${credit != null and not #lists.isEmpty(credit)}" th:href="@{'/invest-page?credit_id='+ ${credit[0].id}}">Investment</a>
 		</div>
 		<div class="dropdown-container ml-auto">
 			<h2>Hi, [[${user.getUsername()}]]</h2>
