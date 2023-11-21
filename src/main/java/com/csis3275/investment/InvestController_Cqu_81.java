@@ -80,7 +80,7 @@ public class InvestController_Cqu_81 {
     
     
     @PostMapping("/invest/add/{creditId}")
-    public String invest(@RequestParam String price, Model model, @PathVariable Long creditId) {
+    public String invest(@RequestParam String price, Model model, @PathVariable Long creditId, @RequestParam int shares) {
     		
     	
     		float Price = Float.parseFloat(price);
@@ -90,8 +90,8 @@ public class InvestController_Cqu_81 {
     		newTran.setCredit(credit);
     		newTran.setType("Purchase");
     		newTran.setDescription("Investment");
-    		credit.setBalance((float) (credit.getBalance() + Price));
-    		newTran.setAmount(Price);
+    		credit.setBalance((float) (credit.getBalance() + (Price * shares)));
+    		newTran.setAmount(Price * shares);
     		newTran.setRefunded(false);
     		creditTransService.createCreditTransaction(newTran);
     		
