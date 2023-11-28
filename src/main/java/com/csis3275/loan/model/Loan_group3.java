@@ -44,7 +44,12 @@ public class Loan_group3 {
 		this.user = user;
 	}
 	
-	
+	public float CreatePayment(float amount, float rate, int loanTerm, String type) {	
+		float payment;
+		
+		payment = amount * rate * loanTerm; 
+		return payment;
+	}
 	
 
 	public String getType() {

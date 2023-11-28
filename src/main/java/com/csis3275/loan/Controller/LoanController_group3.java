@@ -40,34 +40,29 @@ Authentication authentication = SecurityContextHolder.getContext().getAuthentica
 			String username = authentication.getName();
 			User_group3 currentUser = userService.getUserByEmail(username); 
 			
-			
 			loanToAdd.setUser(currentUser);
-			
 			float payment;    
-
+			
 			if (loanToAdd.getType().equals("Car")) {
-				loanToAdd.setRate(0.03f);
-
+				loanToAdd.setRate(0.03f); } 
+			else if (loanToAdd.getType().equals("Home")) { 
+				loanToAdd.setRate(0.075f);}
 				
-			} else if (loanToAdd.getType().equals("Home")) {
-				loanToAdd.setRate(0.075f);
-
-			}
+			//payment = (loanToAdd.getAmount() * (loanToAdd.getRate() * loanToAdd.getLoanTerm() ) );
+			float amount = loanToAdd.getAmount();
+			float rate = loanToAdd.getRate();
+			int loanTerm = loanToAdd.getLoanTerm();
+			String type = loanToAdd.getType();
 			
 			
-			payment = (loanToAdd.getAmount() * (loanToAdd.getRate() * loanToAdd.getLoanTerm() ) );
-			
-			loanToAdd.setTotalToBePaid(payment + loanToAdd.getAmount());
-
-			
-		
+			payment = loanToAdd.CreatePayment(amount, rate, loanTerm, type);
 		
 		
 		}
 		
 
 
-		loanService.createLoans(loanToAdd);
+		loanService.createLoans(loanToAdd); 
 		return "redirect:/user-page";
 	}
 
