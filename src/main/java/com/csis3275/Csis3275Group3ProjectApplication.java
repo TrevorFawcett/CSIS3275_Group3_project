@@ -2,8 +2,10 @@ package com.csis3275;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import com.csis3275.login.model.User_group3;
 import com.csis3275.login.service.UserServiceImpl_group3;
@@ -20,6 +22,8 @@ import com.csis3275.banking.model.BankingTrans_group3;
 import com.csis3275.Credit.model.CreditTrans_group3;
 
 @SpringBootApplication
+//@ComponentScan(basePackages = "com.csis3275.Credit.*")
+@EnableAutoConfiguration
 public class Csis3275Group3ProjectApplication {
 
 	public static void main(String[] args) {
