@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.csis3275.Credit.model.Credit_group3;
 import com.csis3275.banking.model.Banking_group3;
 
 @Repository
+@Service
 public interface ICreditRepository extends CrudRepository<Credit_group3, Long> {
 	
 	@Query("SELECT c FROM Credit_group3 c WHERE c.user.id = :userId")

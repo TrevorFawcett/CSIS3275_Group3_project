@@ -97,7 +97,7 @@ class InvestmentControllerTest {
 	@Test
 	public void TestBuyShares() throws Exception {
 		mvc.perform( MockMvcRequestBuilders
-				.post("/invest/add/{creditId}")
+				.post("/invest/add/")
 				.param("price", "378.61")
 				.param("shares", "4")
 				.param("creditId", "1")
