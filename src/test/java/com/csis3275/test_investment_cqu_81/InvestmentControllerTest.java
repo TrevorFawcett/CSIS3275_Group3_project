@@ -41,9 +41,7 @@ class InvestmentControllerTest {
 			@author CarlosQuintero - 300353381 
 			 Testing if the controller works and return the view in /templates/investment.html once the "invest-page" GET request is called
 			 
-			 
-			 Note: We are only expecting the credit id attribute since when returning the view the other values are empty while we wait for user response
-			 In the post test we will expect a users input
+			
 	 */
 	@Test
 	void TestInvestmentFormGet() throws Exception	{
