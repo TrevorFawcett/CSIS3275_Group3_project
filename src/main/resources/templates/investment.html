@@ -12,6 +12,9 @@
         <h1>Discover Multiple Stocks and Invest</h1>
         <form class="form-inline mb-3" action="#" th:action="@{/invest-page}" th:method="post" th:object="${symbol}">
             <div class="form-group">
+            
+            	 <input type="hidden" th:value="${creditId}" name="creditId" />
+            
                 <label class="mr-2">Search Stock:</label>
                 <input type="text" class="form-control" th:value="${symbol}" name="symbol" />
             </div>
@@ -44,18 +47,18 @@
                 </tr>
                 <tr th:if="${globalQuote != null}">
                     <td>Price</td>
-                    <td th:text="${globalQuote['05. price']}"></td>
+                    <td th:text="${globalQuote['05. price']}" th:with="price=${globalQuote['05. price']}"></td>
                 </tr>
             </tbody>
         </table>
         
         <form th:action="@{'/invest/add/' + ${creditId}}" th:method="post">
-       		<input type="hidden" name="price" value="40" />
+       		<input th:if="${price != null}" type="number" id="price" name="price" th:value="${globalQuote['05. price']}" />
        		
        		<label for="shares">Number of Shares:</label>
     		<input type="number" id="shares" name="shares" required />
     		
-           <button type="submit" class="btn btn-success">BUY SHARES</button>
+           <button th:if="${creditId != null}" type="submit" class="btn btn-success">BUY SHARES</button>
         </form>  
        
 
