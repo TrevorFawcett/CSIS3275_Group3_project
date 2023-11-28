@@ -44,10 +44,18 @@ public class Loan_group3 {
 		this.user = user;
 	}
 	
-	public float CreatePayment(float amount, float rate, int loanTerm, String type) {	
+	public float CreatePayment() {	
 		float payment;
+		//float amount = this.getAmount();
 		
-		payment = amount * rate * loanTerm; 
+		
+		if (this.type.equals("Car")) {
+			this.setRate(0.03f); } 
+		else if (this.type.equals("Home")) { 
+			this.setRate(0.075f);}
+		
+		payment = this.amount * this.loanTerm * this.rate;
+		//payment = amount * rate * loanTerm; 
 		return payment;
 	}
 	

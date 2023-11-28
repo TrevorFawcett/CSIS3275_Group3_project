@@ -43,6 +43,7 @@ Authentication authentication = SecurityContextHolder.getContext().getAuthentica
 			loanToAdd.setUser(currentUser);
 			float payment;    
 			
+			/*
 			if (loanToAdd.getType().equals("Car")) {
 				loanToAdd.setRate(0.03f); } 
 			else if (loanToAdd.getType().equals("Home")) { 
@@ -54,8 +55,9 @@ Authentication authentication = SecurityContextHolder.getContext().getAuthentica
 			int loanTerm = loanToAdd.getLoanTerm();
 			String type = loanToAdd.getType();
 			
-			
-			payment = loanToAdd.CreatePayment(amount, rate, loanTerm, type);
+			*/
+			payment = loanToAdd.CreatePayment();
+			loanToAdd.setTotalToBePaid(payment + loanToAdd.getAmount());
 		
 		
 		}
