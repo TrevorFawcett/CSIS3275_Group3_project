@@ -69,7 +69,7 @@ public class InvestController_Cqu_81 {
                 Map<String, Object> quoteData = (Map<String, Object>) globalQuoteData.get("Global Quote");
                 model.addAttribute("globalQuote", quoteData);
             } else {
-                model.addAttribute("error", "Error fetching global quote data");
+                model.addAttribute("error", "API only allows 25 requests per day :( ");
             }
 
 
