@@ -87,8 +87,8 @@
 				</div>
 
 				<form th:action="@{'/invest/add/' + ${creditId}}" th:method="post">
-					<input type="number" id="price"
-						name="price" th:value="378.61" /> <label
+					<input type="text" id="price"
+						name="price" th:value="${price}" /> <label
 						for="shares">Number of Shares:</label> <input
 						 type="number" id="shares" name="shares"
 						required />
