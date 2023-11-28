@@ -32,7 +32,7 @@ public class InvestController_Cqu_81 {
 
     private String apiKey = "ZYM7CUCE7B1VJIIX";
     private final RestTemplate restTemplate = new RestTemplate();
-    public long CreditID;
+    //public long CreditID;
 
     @GetMapping("/invest-page")
     public String investPage(Model model, @RequestParam("credit_id") Long Id) {
@@ -51,6 +51,10 @@ public class InvestController_Cqu_81 {
     public String fetchData(@RequestParam String symbol, Model model) {
     	
         try {
+        	
+        	
+        	 symbol = symbol.toUpperCase();
+        	 
             // Fetching overview data
             String overviewUrl = "https://www.alphavantage.co/query?function=OVERVIEW&symbol=" + symbol + "&apikey=" + apiKey;
             Map<String, String> overviewData = restTemplate.getForObject(overviewUrl, Map.class);
@@ -80,18 +84,16 @@ public class InvestController_Cqu_81 {
     
     
     @PostMapping("/invest/add/{creditId}")
-    public String invest(@RequestParam String price, Model model, @PathVariable Long creditId, @RequestParam int shares) {
-    		
-    	
-    		float Price = Float.parseFloat(price);
+    public String invest(@RequestParam Float price, Model model, @PathVariable Long creditId, @RequestParam int shares) {
+    		    	
     		
     		CreditTrans_group3 newTran = new CreditTrans_group3();
     		Credit_group3 credit = creditService.readSingleCreditAccount(creditId);
     		newTran.setCredit(credit);
     		newTran.setType("Purchase");
     		newTran.setDescription("Investment");
-    		credit.setBalance((float) (credit.getBalance() + (Price * shares)));
-    		newTran.setAmount(Price * shares);
+    		credit.setBalance((float) (credit.getBalance() + (price * shares)));
+    		newTran.setAmount(price * shares);
     		newTran.setRefunded(false);
     		creditTransService.createCreditTransaction(newTran);
     		
