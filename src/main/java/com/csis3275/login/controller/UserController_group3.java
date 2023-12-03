@@ -58,6 +58,10 @@ public class UserController_group3 {
 	private LoanServiceImpl loanService;
 	
 	
+	@GetMapping("/")
+	public String redirect() {
+		return "login";
+	}
 	
 	
 	@GetMapping("/login")
