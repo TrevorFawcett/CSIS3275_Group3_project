@@ -1,33 +1,41 @@
 package com.csis3275.loan.model;
 
+import java.util.List;
+
+import com.csis3275.Credit.model.CreditTrans_group3;
 import com.csis3275.login.model.User_group3;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Loans")
+@Table(name="Loan")
 public class Loan_group3 {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	private String type;
-	private float amount;
+	private float amount; // initial starting amount
 	private float rate;
 	private int loanTerm;
-	private float totalToBePaid;
+	private float totalToBePaid; //starting amount + interest, also current balance
 	
 	
 	
 	@ManyToOne
     @JoinColumn(name = "user_id") // Define the foreign key column
 	private User_group3 user;
+	
+	@OneToMany(mappedBy = "loan", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<LoanTrans_group3> loanTransactions;
 	
 	public Loan_group3() {
 		super();
@@ -57,6 +65,13 @@ public class Loan_group3 {
 		payment = this.amount * this.loanTerm * this.rate;
 		//payment = amount * rate * loanTerm; 
 		return payment;
+	}
+	
+	public void updateBalance(float transAmount) {
+		float newBalance = this.totalToBePaid - transAmount;
+		this.setTotalToBePaid(newBalance);
+		
+		
 	}
 	
 

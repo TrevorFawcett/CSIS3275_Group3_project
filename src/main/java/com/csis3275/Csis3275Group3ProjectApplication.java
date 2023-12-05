@@ -14,6 +14,8 @@ import com.csis3275.banking.model.BankingServiceImpl;
 import com.csis3275.banking.model.BankingTransServiceImpl;
 import com.csis3275.banking.model.Banking_group3;
 import com.csis3275.loan.model.LoanServiceImpl;
+import com.csis3275.loan.model.LoanTransServiceImpl;
+import com.csis3275.loan.model.LoanTrans_group3;
 import com.csis3275.loan.model.Loan_group3;
 import com.csis3275.Credit.model.CreditServiceImpl;
 import com.csis3275.Credit.model.CreditTransServiceImpl;
@@ -37,7 +39,7 @@ public class Csis3275Group3ProjectApplication {
 	@Bean
 	CommandLineRunner demo(UserServiceImpl_group3 repository, BankingServiceImpl Bankingrepository,
 			CreditServiceImpl creditRepository, LoanServiceImpl loanRepository, CreditTransServiceImpl creditTransService
-			,BankingTransServiceImpl bankingTranService) {
+			,BankingTransServiceImpl bankingTranService, LoanTransServiceImpl loanTransService) {
 
 		return (args) -> {
 			// Use https://www.browserling.com/tools/bcrypt to encrypt your password before
@@ -60,10 +62,10 @@ public class Csis3275Group3ProjectApplication {
 			Credit_group3 rewardsAccount = new Credit_group3("Rewards Card", 575.0f, 5000, 0.15f, "Rewards", user2);
 			creditRepository.createCreditCardAccounts(rewardsAccount);
 
-			Loan_group3 loan1 = new Loan_group3("Personal Loan", 10000.0f, 5.0f, 4, 11000.0f, user2);
+			Loan_group3 loan1 = new Loan_group3("Car", 15000.0f, 0.03f, 4, 16800.0f, user2);
 			loanRepository.createLoans(loan1);
 			
-			Loan_group3 loan2 = new Loan_group3("Home Loan", 200000.0f, 3.5f, 7, 250000.0f, user2);
+			Loan_group3 loan2 = new Loan_group3("Home", 200000.0f, 0.075f, 7, 305000.0f, user2);
 			loanRepository.createLoans(loan2);
 			
 			BankingTrans_group3 bankingTrans1 = new BankingTrans_group3("Deposit", 100.0f, "Deposit for savings", 0.0f, 100.0f, checkingAccount,false);
@@ -79,7 +81,10 @@ public class Csis3275Group3ProjectApplication {
 	        CreditTrans_group3 transaction2 = new CreditTrans_group3("Payment", "Monthly bill", -100.0f, rewardsAccount, false);
 	        creditTransService.createCreditTransaction(transaction2);
 	        
-			
+			//LoanTrans_group3 payment1 = new LoanTrans_group3("payment", "Monthly loan payment", 2000.0f, loan1, false);
+			//loanTransService.createLoanTransaction(payment1);
+	        
+	        
 		}; 
 	} 
 

@@ -22,10 +22,14 @@
 		</div>
 		<div class="dropdown ml-auto">
 			<h2 class="text-white">Hi, [[${user.getUsername()}]]</h2>
-			<div class="dropdown-menu">
+			<!--<div class="dropdown-menu">
 				<a class="dropdown-item" href="/logout">Logout</a>
-			</div>
+			</div>-->
 		</div>
+		<span sec:authorize="isAuthenticated"> <a class="btn btn-danger "th:href="@{/logout}">
+				Logout </a>
+
+		</span>
 	</nav>
 
 	<div class="container mt-4">
@@ -138,7 +142,7 @@
 						<h2 class="card-title">Loans</h2>
 						<ul class="list-group">
 							<li class="list-group-item" th:each="account : ${loan}"><a
-								th:href="'/user-page/loans/transactions?account_id=' + ${account.id}"
+								th:href="'/user-page/loan/transactions?account_id=' + ${account.id}"
 								class="btn btn-success" th:text="${account.type}"></a> <span
 								class="total" th:text="'$' + ${account.totalToBePaid}"></span></li>
 							<li class="list-group-item"><span>Total</span> <span
