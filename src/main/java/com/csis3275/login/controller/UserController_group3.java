@@ -59,8 +59,18 @@ public class UserController_group3 {
 	
 	@Autowired
 	private LoanServiceImpl loanService;
+<<<<<<< Updated upstream
 	
 	
+=======
+
+	@Autowired
+	private CreditTransServiceImpl creditTransService;
+
+	@Autowired
+	private BankingTransServiceImpl bankingTransService;
+
+>>>>>>> Stashed changes
 	@GetMapping("/login")
 	public String login() {
 		return "login";

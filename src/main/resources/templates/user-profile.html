@@ -7,7 +7,11 @@
 <title>User Profile</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/user-profile.css}" /> 
 </head>
+<<<<<<< Updated upstream
 <body>
+=======
+<body class = "user-profile">
+>>>>>>> Stashed changes
 
 <!-- 
 First Name
@@ -18,7 +22,29 @@ Date of Birth
 Address 
  -->
 
+<<<<<<< Updated upstream
 <div class = "main-box">
+=======
+<nav>
+		<div>
+			<a th:href="@{user-page}">Accounts</a> 
+
+			<a href="#" >Profile & Account Settings</a> 
+			<a href="#">Financial Advising</a>
+		</div>
+		<div class="dropdown-container ml-auto">
+			
+			<h2 th:text = "${accountInfo.email}"></h2>
+			<div class="dropdown-content">
+				<a th:href="@{/logout}" class="dropdown-item">Logout</a>
+			</div>
+		</div>
+		
+	</nav>
+
+
+<div class = "profile-main-box">
+>>>>>>> Stashed changes
 	<H1>User Profile</H1>
 	
 	<label> Full Name: </label>

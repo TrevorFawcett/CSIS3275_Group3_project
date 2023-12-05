@@ -74,7 +74,12 @@ public class Csis3275Group3ProjectApplication {
 	        creditTransService.createCreditTransaction(transaction2);
 	        
 			
+<<<<<<< Updated upstream
 		};
 	}
+=======
+		}; 
+	} 
+>>>>>>> Stashed changes
 
 }
