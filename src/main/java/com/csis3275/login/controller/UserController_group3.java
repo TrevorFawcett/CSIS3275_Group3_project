@@ -60,11 +60,22 @@ public class UserController_group3 {
 	@Autowired
 	private LoanServiceImpl loanService;
 
+
 	@Autowired
 	private CreditTransServiceImpl creditTransService;
 
 	@Autowired
 	private BankingTransServiceImpl bankingTransService;
+
+
+	
+	
+	@GetMapping("/")
+	public String redirect() {
+		return "login";
+	}
+	
+	
 
 	@GetMapping("/login")
 	public String login() {
