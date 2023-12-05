@@ -22,9 +22,7 @@
 		</div>
 		<div class="dropdown ml-auto">
 			<h2 class="text-white">Hi, [[${user.getUsername()}]]</h2>
-			<div class="dropdown-menu">
-				<a class="dropdown-item" href="/logout">Logout</a>
-			</div>
+			<a th:href="@{/logout}" class="btn btn-outline-light">Logout</a>
 		</div>
 	</nav>
 
