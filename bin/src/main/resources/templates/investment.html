@@ -87,13 +87,13 @@
 				</div>
 
 				<form th:action="@{'/invest/add/' + ${creditId}}" th:method="post">
-					<input th:if="${price != null}" type="number" id="price"
-						name="price" th:value="${globalQuote['05. price']}" /> <label
-						th:if="${price != null}" for="shares">Number of Shares:</label> <input
-						th:if="${price != null}" type="number" id="shares" name="shares"
+					<input type="text" id="price"
+						name="price" th:value="${price}" /> <label
+						for="shares">Number of Shares:</label> <input
+						 type="number" id="shares" name="shares"
 						required />
 
-					<button th:if="${creditId != null  and price != null}"
+					<button
 						type="submit" class="btn btn-success">BUY SHARES</button>
 				</form>
 

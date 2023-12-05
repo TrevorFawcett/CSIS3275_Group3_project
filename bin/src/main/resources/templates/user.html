@@ -3,148 +3,182 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>User Dashboard</title>
-<link rel="stylesheet" type="text/css" th:href="@{/css/user_display.css}" />
+<!-- Add Bootstrap CSS link -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
-	<nav>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div>
-			<a th:href="@{/user-page}">Accounts</a> 
+			<a class="navbar-brand" href="/user-page">Accounts</a> <a
+				class="navbar-brand" href="/profile">Profile & Account Settings</a>
+			<a class="navbar-brand" href="#advising">Financial Advising</a> <a
+				class="navbar-brand"
+				th:if="${credit != null and not #lists.isEmpty(credit)}"
+				th:href="@{'/invest-page?credit_id='+ ${credit[0].id}}">Investment</a>
 
-			<a th:href="@{/profile}" >Profile & Account Settings</a> 
-			<a href="#advising">Financial Advising</a>
-			<a th:if="${credit != null and not #lists.isEmpty(credit)}" th:href="@{'/invest-page?credit_id='+ ${credit[0].id}}">Investment</a>
 		</div>
-		<div class="dropdown-container ml-auto">
-			<h2>Hi, [[${user.getUsername()}]]</h2>
-			<div class="dropdown-content">
-				<a th:href="@{/logout}" class="dropdown-item">Logout</a>
-			</div>
+		<div class="dropdown ml-auto">
+			<h2 class="text-white">Hi, [[${user.getUsername()}]]</h2>
+
+			<a th:href="@{/logout}" class="btn btn-outline-light">Logout</a>
+
+
 		</div>
+		
 	</nav>
-	
-	<div class = "grid-container">
-<div class="item1">
-	<div class="banking">
-			<h2>Banking Accounts</h2>
 
+	<div class="container mt-4">
 
-			<ul class="list">
-				<li class="list-item" th:each="account : ${banking}">
-				
-				
-				<a id="account-link" th:href="@{'/user-page/banking/transactions?account_id=' + ${account.id}}" class="btn btn-success" th:text="${account.name}"></a>
-				<span class="total" th:text="'$' + ${account.balance}"></span>
-				
-				
-				</li>
-					
-					
-				<li class="list-item"><span>Total</span> <span class="total"
-					th:text="${totalBalance}"></span></li>
-			</ul>
-
-
-
-			<a id="account-link" th:href="@{/user-page/banking/add}" class="btn btn-success">
-				<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus"
-					fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-						d="M8 0a.5.5 0 0 1 .5.5V7h6.5a.5.5 0 0 1 0 1H8V15.5a.5.5 0 0 1-1 0V8H0a.5.5 0 0 1 0-1H7V.5a.5.5 0 0 1 .5-.5z" />
-                </svg> Open a Banking Account
-			</a>
+		<div th:if="${error}">
+			<div class="alert alert-danger" role="alert">
+				<strong>Error:</strong><p th:text=${error}>
 			</div>
-</div>
- 
- 
-  <div class="item2">
-  <h2>Transfer Money</h2>
-			<form>
-				<div class="form-group">
-					<label for="fromAccount">From Account</label> <select
-						class="form-control" id="fromAccount">
-						<option value="checking">Checking Account</option>
-						<option value="savings">Savings Account</option>
-						<option value="creditCard">Credit Card</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="toAccount">To Account</label> <select
-						class="form-control" id="toAccount">
-						<option value="checking">Checking Account</option>
-						<option value="savings">Savings Account</option>
-						<option value="creditCard">Credit Card</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="amount">Amount</label> <input type="text"
-						class="form-control" id="amount" placeholder="Enter the amount">
-				</div>
-				<button type="submit" class="btn btn-primary">Submit</button>
-			</form>
-  </div>
-  <div class="item3">
-  <div class="banking">
-			<h2>Credit Cards</h2>
-			
-			<ul class="list">
-				<li class="list-item" th:each="account : ${credit}">
-
-
-				<a id="account-link" th:href="@{'/user-page/credit/transactions?account_id=' + ${account.id}}" class="btn btn-success"     
-
-
-					th:text="${account.name}"></a> <span class="total"
-					th:text="'$' + ${account.balance}"></span></li>
-					
-				<li class="list-item"><span>Total</span> <span class="total"
-					th:text="${totalCreditBalance}"></span></li>
-			</ul>
-			
-			<a id="account-link" th:href="@{/user-page/credit/add}" class="btn btn-success"> <svg
-					width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus"
-					fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-						d="M8 0a.5.5 0 0 1 .5.5V7h6.5a.5.5 0 0 1 0 1H8V15.5a.5.5 0 0 1-1 0V8H0a.5.5 0 0 1 0-1H7V.5a.5.5 0 0 1 .5-.5z" />
-                </svg> Open a Credit Card
-			</a>
-			</div>
-  </div>  
-  
-  
-  <div class="item6">
-  <div class="banking">
-			<h2>Loans</h2>
-			
-			<ul class="list">
-				<li class="list-item" th:each="account : ${loan}">
-				<a id="account-link" th:href="'/user-page/loans/transactions?account_id=' + ${account.id}}" class="btn btn-success"     
-					th:text="${account.type}"></a> <span class="total"
-					th:text="'$' + ${account.totalToBePaid}"></span></li>
-				<li class="list-item"><span>Total</span> <span class="total"
-					th:text="${totalLoanBalance}"></span></li>
-			</ul>
-			
-			
-			<a id="account-link" th:href="@{/user-page/loan/add}" class="btn btn-success"> <svg width="1em"
-					height="1em" viewBox="0 0 16 16" class="bi bi-plus"
-					fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-						d="M8 0a.5.5 0 0 1 .5.5V7h6.5a.5.5 0 0 1 0 1H8V15.5a.5.5 0 0 1-1 0V8H0a.5.5 0 0 1 0-1H7V.5a.5.5 0 0 1 .5-.5z" />
-                </svg> Open a Loan
-			</a>
 		</div>
-  </div>
- 
-  <div class="item8">8</div>  
-</div>
-	
-	
-	
-	
-	
 
+		<div th:if="${errorCredit}">
+			<div class="alert alert-danger" role="alert">
+				<strong>Error:</strong> <p th:text=${errorCredit}>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-body">
+						<h2 class="card-title">Banking Accounts</h2>
+						<ul class="list-group">
+							<li class="list-group-item" th:each="account : ${banking}">
+								<a
+								th:href="@{'/user-page/banking/transactions?account_id=' + ${account.id}}"
+								class="btn btn-success" th:text="${account.name}"></a> <span
+								class="total" th:text="'$' + ${account.balance}"></span>
+							</li>
+							<li class="list-group-item"><span>Total</span> <span
+								class="total" th:text="${totalBalance}"></span></li>
+						</ul>
+						<a th:href="@{/user-page/banking/add}"
+							class="btn btn-success mt-3"> <svg width="1em" height="1em"
+								viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+									d="M8 0a.5.5 0 0 1 .5.5V7h6.5a.5.5 0 0 1 0 1H8V15.5a.5.5 0 0 1-1 0V8H0a.5.5 0 0 1 0-1H7V.5a.5.5 0 0 1 .5-.5z" />
+                            </svg> Open a Banking Account
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-body">
+						<h2 class="card-title">Transfer Money Between Accounts</h2>
+						<form method="post" th:action="@{/user-page/transfer}" onsubmit="return validateForm()">
+							<div class="form-group">
+								<label for="fromAccount">From Account</label> <select
+									class="form-control" id="fromAccount" name="fromAccount">
+									<option value="" disabled selected>Select From Account</option>
+									<!-- Loop through user's accounts and generate options -->
+									<th:block th:each="account : ${userAccounts}">
+										<option th:value="${account.id + ',' + account.name}"
+											th:text="${account.name}"></option>
+									</th:block>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="toAccount">To Account</label> <select
+									class="form-control" id="toAccount" name="toAccount">
+									<option value="" disabled selected>Select To Account</option>
+									<!-- Loop through user's accounts and generate options -->
+									<th:block th:each="account : ${userAccounts}">
+										<option th:value="${account.id + ',' + account.name}"
+											th:text="${account.name}"></option>
+									</th:block>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="amount">Amount</label> <input type="text"
+									class="form-control" id="amount" name="amount"
+									placeholder="Enter the amount">
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-4">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-body">
+						<h2 class="card-title">Credit Cards</h2>
+						<ul class="list-group">
+							<li class="list-group-item" th:each="account : ${credit}"><a
+								th:href="@{'/user-page/credit/transactions?account_id=' + ${account.id}}"
+								class="btn btn-success" th:text="${account.name}"></a> <span
+								class="total" th:text="'$' + ${account.balance}"></span></li>
+							<li class="list-group-item"><span>Total</span> <span
+								class="total" th:text="${totalCreditBalance}"></span></li>
+						</ul>
+						<a th:href="@{/user-page/credit/add}" class="btn btn-success mt-3">
+							<svg width="1em" height="1em" viewBox="0 0 16 16"
+								class="bi bi-plus" fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+									d="M8 0a.5.5 0 0 1 .5.5V7h6.5a.5.5 0 0 1 0 1H8V15.5a.5.5 0 0 1-1 0V8H0a.5.5 0 0 1 0-1H7V.5a.5.5 0 0 1 .5-.5z" />
+                            </svg> Open a Credit Card
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-body">
+						<h2 class="card-title">Loans</h2>
+						<ul class="list-group">
+							<li class="list-group-item" th:each="account : ${loan}"><a
+								th:href="'/user-page/loan/transactions?account_id=' + ${account.id}"
+								class="btn btn-success" th:text="${account.type}"></a> <span
+								class="total" th:text="'$' + ${account.totalToBePaid}"></span></li>
+							<li class="list-group-item"><span>Total</span> <span
+								class="total" th:text="${totalLoanBalance}"></span></li>
+						</ul>
+						<a th:href="@{/user-page/loan/add}" class="btn btn-success mt-3">
+							<svg width="1em" height="1em" viewBox="0 0 16 16"
+								class="bi bi-plus" fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+									d="M8 0a.5.5 0 0 1 .5.5V7h6.5a.5.5 0 0 1 0 1H8V15.5a.5.5 0 0 1-1 0V8H0a.5.5 0 0 1 0-1H7V.5a.5.5 0 0 1 .5-.5z" />
+                            </svg> Open a Loan
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
 	
-</body>	
+	<script>
+    function validateForm() {
+        // Check if all required fields are filled out
+        var fromAccount = document.getElementById('fromAccount').value;
+        var toAccount = document.getElementById('toAccount').value;
+        var amount = document.getElementById('amount').value;
+
+        if (fromAccount === '' || toAccount === '' || amount === '') {
+            alert("Please fill out all fields.");
+            return false; // Prevent form submission
+        }
+
+        // Additional validation logic can be added here if needed
+
+        return true; // Allow form submission
+    }
+</script>
+
+
+</body>
+</html>
