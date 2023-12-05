@@ -189,9 +189,12 @@ h3 {
 						<td th:text="${loan.rate}"></td>
 						<td th:text="${loan.loanTerm}"></td>
 						<td th:text="${loan.totalToBePaid}"></td>
-						<td><a th:href="@{'/your/link/path/' + ${loan.id}}"
+						<td><a th:href="@{'/user-page/loan/transactions?account_id=' + ${loan.id}}"
 							class="btn btn-info">Transactions</a></td>
 					</tr>
+
+					<!--<td><a th:href="@{'/user-page/credit/transactions?account_id=' + ${credit.id}}"
+							class="btn btn-info">Transactions</a></td>-->
 
 				</tbody>
 			</table>

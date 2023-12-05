@@ -43,19 +43,7 @@ Authentication authentication = SecurityContextHolder.getContext().getAuthentica
 			loanToAdd.setUser(currentUser);
 			float payment;    
 			
-			/*
-			if (loanToAdd.getType().equals("Car")) {
-				loanToAdd.setRate(0.03f); } 
-			else if (loanToAdd.getType().equals("Home")) { 
-				loanToAdd.setRate(0.075f);}
-				
-			//payment = (loanToAdd.getAmount() * (loanToAdd.getRate() * loanToAdd.getLoanTerm() ) );
-			float amount = loanToAdd.getAmount();
-			float rate = loanToAdd.getRate();
-			int loanTerm = loanToAdd.getLoanTerm();
-			String type = loanToAdd.getType();
 			
-			*/
 			payment = loanToAdd.CreatePayment();
 			loanToAdd.setTotalToBePaid(payment + loanToAdd.getAmount());
 		

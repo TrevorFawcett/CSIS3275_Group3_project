@@ -1,4 +1,6 @@
-package com.csis3275.Credit.Repositories;
+package com.csis3275.loan.repositories;
+
+
 
 import java.util.List;
 
@@ -10,9 +12,10 @@ import com.csis3275.banking.model.BankingTrans_group3;
 import com.csis3275.loan.model.LoanTrans_group3;
 
 @Repository
-public interface ICreditTransRepository extends CrudRepository<CreditTrans_group3, Long> {
+public interface ILoanTransRepository extends CrudRepository<LoanTrans_group3, Long> {
 	
-	@Query("SELECT ct FROM CreditTrans_group3 ct WHERE ct.credit.id = :accountId")
-	List<CreditTrans_group3> findAllById(Long accountId);
+	//@Query("SELECT ct FROM CreditTrans_group3 ct WHERE ct.credit.id = :accountId")
+	@Query("SELECT lt FROM LoanTrans_group3 lt WHERE lt.loan.id = :accountId")
+	List<LoanTrans_group3> findAllById(Long accountId);
 
 }

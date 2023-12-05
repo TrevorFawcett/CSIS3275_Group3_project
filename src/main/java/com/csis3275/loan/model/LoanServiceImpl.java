@@ -32,6 +32,11 @@ public class LoanServiceImpl {
 		return (List<Loan_group3>) loanService.findAllById(Id);
 	}
 	
+	//READ Single loan
+		public Loan_group3 readSingleLoanAccount(Long id) {
+			return loanService.findById(id).get();
+		}
+	
 	//GET ALL BALANCES 
 	
 	public List<Float> getAllAccountBalances() {
