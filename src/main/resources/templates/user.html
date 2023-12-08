@@ -20,11 +20,25 @@
 				th:href="@{'/invest-page?credit_id='+ ${credit[0].id}}">Investment</a>
 
 		</div>
+
 		<div class="dropdown ml-auto">
 			<h2 class="text-white">Hi, [[${user.getUsername()}]]</h2>
 
 			<a th:href="@{/logout}" class="btn btn-outline-light">Logout</a>
 
+
+
+		<div class="dropdown-container ml-auto">
+			<h2>Hi, [[${user.getUsername()}]]</h2>
+			<div class="dropdown-content">
+				<a th:href="@{/logout}" class="dropdown-item">Logout</a>
+
+		<div class="dropdown ml-auto">
+			<h2 class="text-white">Hi, [[${user.getUsername()}]]</h2>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="/logout">Logout</a>
+
+			</div>
 
 		</div>
 		
@@ -134,13 +148,29 @@
 				</div>
 			</div>
 
+
+		<div class="transfer-container">
+			<h2>Transfer Money</h2>
+			<form>
+				<div class="form-group">
+					<label for="fromAccount">From Account</label> <select
+						class="form-control" id="fromAccount">
+						<option value="checking">Checking Account</option>
+						<option value="savings">Savings Account</option>
+						<option value="creditCard">Credit Card</option>
+					</select>
+
 			<div class="col-md-6">
 				<div class="card">
 					<div class="card-body">
 						<h2 class="card-title">Loans</h2>
 						<ul class="list-group">
 							<li class="list-group-item" th:each="account : ${loan}"><a
+
 								th:href="'/user-page/loan/transactions?account_id=' + ${account.id}"
+
+								th:href="'/user-page/loans/transactions?account_id=' + ${account.id}"
+
 								class="btn btn-success" th:text="${account.type}"></a> <span
 								class="total" th:text="'$' + ${account.totalToBePaid}"></span></li>
 							<li class="list-group-item"><span>Total</span> <span
@@ -155,10 +185,12 @@
                             </svg> Open a Loan
 						</a>
 					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
+
 	</div>
 	
 	<script>
@@ -169,7 +201,11 @@
         var amount = document.getElementById('amount').value;
 
         if (fromAccount === '' || toAccount === '' || amount === '') {
+
             alert("Please fill out all fields.");
+
+            alert('Please fill out all fields.');
+
             return false; // Prevent form submission
         }
 

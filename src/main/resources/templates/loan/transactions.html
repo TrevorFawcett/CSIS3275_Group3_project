@@ -14,7 +14,11 @@
 
 
 		<a th:if="${userRole == 'USER'}"
+
 			th:href="@{'/user-page/loan/transactions/add?account_id=' + ${accountId}}"
+
+			th:href="@{'/user-page/credit/transactions/add?account_id=' + ${accountId}}"
+
 			class="btn btn-success"> add transaction</a>
 
 		<h1>Transaction List</h1>
@@ -29,6 +33,7 @@
 				</tr>
 			</thead>
 			<tbody>
+
 				<tr th:each="transaction : ${loanTrans}">
 					<td th:text="${transaction.type}"></td>
 					<td th:text="${transaction.description}"></td>
@@ -40,6 +45,19 @@
 						th:href="@{'/user-page/loan/transactions/refund?account_id=' + ${accountId}+ '&transaction_id=' + ${transaction.id}}"
 						class="btn btn-danger">Refund</a>
 					</td>-->
+
+				<tr th:each="transaction : ${creditTrans}">
+					<td th:text="${transaction.type}"></td>
+					<td th:text="${transaction.description}"></td>
+					<td th:text="${transaction.amount}"></td>
+					<td
+						th:if="${userRole == 'ADMIN' && transaction.type == 'Purchase' && !transaction.isRefunded}">
+
+						<a
+						th:href="@{'/user-page/credit/transactions/refund?account_id=' + ${accountId}+ '&transaction_id=' + ${transaction.id}}"
+						class="btn btn-danger">Refund</a>
+					</td>
+
 				</tr>
 			</tbody>
 		</table>
