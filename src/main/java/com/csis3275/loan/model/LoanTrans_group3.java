@@ -2,9 +2,7 @@ package com.csis3275.loan.model;
 
 import java.util.List;
 
-
 import com.csis3275.Credit.model.Credit_group3;
-
 import com.csis3275.banking.model.BankingTrans_group3;
 import com.csis3275.banking.model.Banking_group3;
 
@@ -18,15 +16,12 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-
-@Table(name="LoanTrans")
-
+@Table(name="loanTrans")
 public class LoanTrans_group3 {
 	
 	
 	@jakarta.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-
 	private Long Id;
 	private String type;
 	private String description;
@@ -115,8 +110,10 @@ public class LoanTrans_group3 {
 		this.loan = loan;
 	}
 
-
-	private Loan_group3 credit;
-}
 	
+	
+	
+	
+
+}
 

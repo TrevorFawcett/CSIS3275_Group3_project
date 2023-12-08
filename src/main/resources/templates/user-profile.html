@@ -8,7 +8,6 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body class="user-profile">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -27,55 +26,6 @@
         </div>
     </div>
 </nav>
-
-<body class = "user-profile">
-
-
-<!-- 
-First Name
-Last Name
-Email
-Phone
-Date of Birth
-Address 
- -->
-
-
-<div class = "main-box">
-
-<nav>
-		<div>
-			<a th:href="@{user-page}">Accounts</a> 
-
-			<a href="#" >Profile & Account Settings</a> 
-			<a href="#">Financial Advising</a>
-		</div>
-		<div class="dropdown-container ml-auto">
-			
-			<h2 th:text = "${accountInfo.email}"></h2>
-			<div class="dropdown-content">
-				<a th:href="@{/logout}" class="dropdown-item">Logout</a>
-			</div>
-		</div>
-		
-	</nav>
-
-
-<div class = "profile-main-box">
-
-	<H1>User Profile</H1>
-	
-	<label> Full Name: </label>
-	<h3 th:text = "${accountInfo.firstName} + ' ' + ${accountInfo.lastName}"></h3>
-	<label> Email: </label>
-	<h3 th:text = "${accountInfo.email}"></h3>
-	<label>Phone Number: </label>
-	<h3 th:text = "${accountInfo.phone}"></h3>
-	<label>Date of Birth: </label>
-	<h3 th:text = "${accountInfo.dateofbirth}"></h3>
-	<label>Address: </label>
-	<h3 th:text = "${accountInfo.address}"></h3>
-
 
 <div class="container mt-4">
     <h1>User Profile</h1>

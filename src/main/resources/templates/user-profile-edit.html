@@ -1,40 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>User Profile</title>
-
-<!-- <link rel="stylesheet" type="text/css" th:href="@{/css/user-profile.css}" />  -->
-
 </head>
 <body class="edit-form">
-
 
 <div class="container mt-4">
     <div class="form-box">
         <h1 class="mb-4">User Info Edit Form</h1>
         <form action="#" th:action="@{/change}" th:object="${editInfo}" method="post">
-
-<link rel="stylesheet" type="text/css" th:href="@{/css/user-profile.css}" />
-
-
-</head>
-<body class = "edit-form">
-
-<div class="form-box">
-
-<h1>User info Edit Form</h1>
-<form action ="#" th:action="@{/change}" th:object="${editInfo}" method="post" >
-
 
             <div class="form-group">
                 <label for="fname">First name:</label>
@@ -56,20 +34,10 @@
                 <input type="date" class="form-control" th:value="${editInfo.dateofbirth}" th:field="${editInfo.dateofbirth}" />
             </div>
 
-
             <div class="form-group">
                 <label>Address:</label>
                 <input type="text" class="form-control" th:value="${editInfo.address}" th:field="${editInfo.address}" />
             </div>
-
-<label >Address:</label><br>
-<input type="text" th:value ="${editInfo.address}" th:field="${editInfo.address}"  ><br>
-
-<input type="hidden" th:value ="${editInfo.accountNumber}" th:field="${editInfo.accountNumber}" readOnly>
-<input type="hidden" th:value ="${editInfo.email}" th:field="${editInfo.email}" readOnly> 
- 
- <input type="submit" value="Submit" />
-
 
             <input type="hidden" th:value="${editInfo.email}" th:field="${editInfo.email}" readonly />
             <input type="hidden" th:value="${editInfo.id}" th:field="${editInfo.id}" readonly />
@@ -84,18 +52,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-
-
-<input type="hidden" th:value ="${editInfo.email}" th:field="${editInfo.email}" readOnly> 
-<input type="hidden" th:value ="${editInfo.id}" th:field="${editInfo.id}" readOnly> 
- 
- <input type="submit" value="Submit" />
-
-
-</form>
-</div>
-
 
 </body>
 </html>

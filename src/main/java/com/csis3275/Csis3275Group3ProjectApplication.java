@@ -81,7 +81,11 @@ public class Csis3275Group3ProjectApplication {
 	        CreditTrans_group3 transaction2 = new CreditTrans_group3("Payment", "Monthly bill", -100.0f, rewardsAccount, false);
 	        creditTransService.createCreditTransaction(transaction2);
 	        
+			//LoanTrans_group3 payment1 = new LoanTrans_group3("payment", "Monthly loan payment", 2000.0f, loan1, false);
+			//loanTransService.createLoanTransaction(payment1);
+	        
 	        
 		}; 
 	} 
 
+}

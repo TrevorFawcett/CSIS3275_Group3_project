@@ -61,7 +61,6 @@ public class UserController_group3 {
 	private LoanServiceImpl loanService;
 
 
-
 	@Autowired
 	private CreditTransServiceImpl creditTransService;
 
@@ -77,14 +76,6 @@ public class UserController_group3 {
 	}
 	
 	
-
-
-
-	@Autowired
-	private CreditTransServiceImpl creditTransService;
-
-	@Autowired
-	private BankingTransServiceImpl bankingTransService;
 
 	@GetMapping("/login")
 	public String login() {
