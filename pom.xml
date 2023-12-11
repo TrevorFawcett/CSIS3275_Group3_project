@@ -66,10 +66,15 @@
 	<dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
+<<<<<<< HEAD
     <version>3.141.0</version>
 	</dependency>
 
 
+=======
+    <version>4.15.0</version>
+</dependency>
+>>>>>>> 991ba7ced4ca35597ede1b4f4e963c1eb2dbfa01
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
